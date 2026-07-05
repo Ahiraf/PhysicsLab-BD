@@ -1,0 +1,203 @@
+/* ------------------------------------------------------------------
+   PhysicsLab BD — global styles
+   One stylesheet for the whole site (kept simple for learning).
+------------------------------------------------------------------ */
+
+:root {
+  --bg: #0b1020;
+  --bg-soft: #141a2e;
+  --card: #171f38;
+  --border: #26304f;
+  --text: #e7ecf5;
+  --muted: #9aa6c2;
+  --accent: #5b8cff;
+  --accent-2: #37e0b0;
+  --danger: #ff6b6b;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { padding: 0; margin: 0; }
+
+body {
+  background: radial-gradient(1200px 600px at 70% -10%, #1a2547 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- Navbar ---- */
+.navbar {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 16, 32, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.3px; }
+.brand span { color: var(--accent-2); }
+.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-links a {
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-links a:hover { background: var(--bg-soft); color: var(--text); }
+
+main.container { padding-top: 28px; padding-bottom: 60px; }
+
+/* ---- Hero (home) ---- */
+.hero { text-align: center; padding: 40px 0 24px; }
+.hero h1 { font-size: 2.4rem; margin: 0 0 12px; line-height: 1.2; }
+.hero p { color: var(--muted); font-size: 1.1rem; max-width: 620px; margin: 0 auto; }
+.hero .pill {
+  display: inline-block;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--accent-2);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+/* ---- Cards ---- */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.card .emoji { font-size: 1.8rem; }
+.card h3 { margin: 10px 0 6px; font-size: 1.2rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.card .chapter { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.card.soon { opacity: 0.55; }
+.card .badge {
+  display: inline-block; margin-top: 10px; font-size: 0.75rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 999px; background: var(--bg-soft); color: var(--muted);
+}
+
+.section-title { margin: 40px 0 6px; font-size: 1.5rem; }
+.section-sub { color: var(--muted); margin: 0; }
+
+/* ---- Breadcrumb ---- */
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+.breadcrumb a:hover { color: var(--text); }
+
+/* ---- Simulation layout ---- */
+.sim-title { font-size: 1.9rem; margin: 4px 0 20px; }
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+.sim-canvas-wrap {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+.sim-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+.sim-controls {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.sim-controls h3 { margin: 0 0 14px; font-size: 1.05rem; }
+
+/* ---- Slider control ---- */
+.control { margin-bottom: 16px; }
+.control label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px; }
+.control label b { color: var(--accent-2); }
+.control input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+/* ---- Buttons ---- */
+.btn-row { display: flex; gap: 10px; margin-top: 4px; }
+.btn {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #071022; }
+
+/* ---- Live results ---- */
+.results { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 14px; }
+.results .row { display: flex; justify-content: space-between; font-size: 0.95rem; padding: 3px 0; }
+.results .row b { color: var(--accent-2); }
+
+/* ---- Explanation ---- */
+.sim-explain {
+  margin-top: 26px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.sim-explain h2 { margin-top: 0; font-size: 1.25rem; }
+.formula {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  color: var(--accent-2);
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+/* ---- Footer ---- */
+.footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.9rem;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 760px) {
+  .hero h1 { font-size: 1.8rem; }
+  .grid, .grid-3 { grid-template-columns: 1fr; }
+  .sim-grid { grid-template-columns: 1fr; }
+}

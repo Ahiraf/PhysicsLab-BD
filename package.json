@@ -1,0 +1,16 @@
+{
+  "name": "physicslab-bd",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive physics simulations for Bangladesh HSC students (1st & 2nd paper).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "15.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  }
+}
