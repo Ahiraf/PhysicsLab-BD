@@ -143,7 +143,16 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
   border-radius: var(--radius);
   padding: 12px;
 }
-.sim-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 8px; }
+/* Canvas scales to fit any screen — the drawing keeps its 640×420 aspect
+   while shrinking to the phone's width so nothing gets cut off. */
+.sim-canvas-wrap canvas {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  touch-action: manipulation;
+}
 
 .sim-controls {
   background: var(--card);
@@ -213,5 +222,20 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
 @media (max-width: 760px) {
   .hero h1 { font-size: 1.8rem; }
   .grid, .grid-3 { grid-template-columns: 1fr; }
+  /* Stack the animation on top and the controls below it. */
   .sim-grid { grid-template-columns: 1fr; }
+  .sim-title { font-size: 1.5rem; }
+  .sim-canvas-wrap { padding: 8px; }
+  .sim-controls { padding: 14px; }
+  .sim-explain { padding: 16px; }
+  .formula { font-size: 0.85rem; }
+}
+
+@media (max-width: 460px) {
+  .container { padding: 0 14px; }
+  .nav-links { gap: 6px; }
+  .nav-links a { padding: 6px 9px; font-size: 0.9rem; }
+  .lang-toggle { padding: 5px 11px; }
+  .sim-title { font-size: 1.3rem; }
+  .formula { font-size: 0.78rem; padding: 10px 12px; }
 }
