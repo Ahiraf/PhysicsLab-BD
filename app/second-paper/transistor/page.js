@@ -137,10 +137,15 @@ export default function TransistorPage() {
   const explanation = (
     <>
       <p>
-        A <b>bipolar transistor</b> lets a small <b>base current</b> control a
-        much larger <b>collector current</b>. That is <b>current amplification</b>:
-        the collector current is β (often 100–300) times the base current, as
-        long as the transistor stays in its <b>active</b> region.
+        A <b>bipolar transistor</b> has a superpower: a tiny <b>base current</b>
+        controls a much larger <b>collector current</b>. That is <b>current
+        amplification</b> — the collector current is β (often 100–300) times the
+        base current.
+      </p>
+      <p>
+        This holds as long as the transistor stays in its <b>active</b> region;
+        push it too far and it saturates (fully ON) or, with no base current, cuts
+        off (fully OFF).
       </p>
       <div className="formula">
         Ic = β · Ib      Vce = Vcc − Ic · R_load{"\n"}
@@ -156,6 +161,30 @@ export default function TransistorPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>বাইপোলার ট্রানজিস্টরের</b> একটি বিশেষ ক্ষমতা আছে: একটি ক্ষুদ্র
+        <b> বেস প্রবাহ</b> অনেক বড় <b>কালেক্টর প্রবাহ</b> নিয়ন্ত্রণ করে। এটিই
+        <b> প্রবাহ বিবর্ধন</b> — কালেক্টর প্রবাহ বেস প্রবাহের β (প্রায়ই ১০০–৩০০) গুণ।
+      </p>
+      <p>
+        এটি ততক্ষণ খাটে যতক্ষণ ট্রানজিস্টর তার <b>সক্রিয়</b> অঞ্চলে থাকে; বেশি ঠেললে
+        এটি সম্পৃক্ত (সম্পূর্ণ ON) হয় বা বেস প্রবাহ না থাকলে কাটঅফ (সম্পূর্ণ OFF) হয়।
+      </p>
+      <div className="formula">
+        Ic = β · Ib      Vce = Vcc − Ic · R_load{"\n"}
+        কাটঅফ (Ib≈0): OFF · সক্রিয়: বিবর্ধন · সম্পৃক্তি: সম্পূর্ণ ON
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        কার্যবিন্দু (লাল) হলুদ <b>লোড রেখা</b> বরাবর সরে। কম বেস প্রবাহ → নিচ-ডানে
+        (<b>OFF</b>); বাড়ালে এটি রেখা বেয়ে সক্রিয় অঞ্চলে ওঠে; আরও ঠেললে ওপর-বামে চলে
+        যায় (<b>সম্পৃক্ত / ON</b>) — বাতি পুরো জ্বলে। এই OFF/ON জোড়াই ট্রানজিস্টরকে
+        <b> সুইচ</b> হিসেবে কাজ করায় (ও লজিক গেট বানায়)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎚️ Transistor (BJT) Amplifier & Switch"
@@ -163,6 +192,7 @@ export default function TransistorPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

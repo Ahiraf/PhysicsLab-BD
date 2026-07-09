@@ -120,10 +120,13 @@ export default function FullWaveRectifierPage() {
   const explanation = (
     <>
       <p>
-        A <b>full-wave (bridge) rectifier</b> uses four diodes so that <i>both</i>
-        halves of the AC cycle are steered the same way through the load. The
-        negative halves are flipped up, so the output is twice as smooth and
-        wastes nothing — its average DC is double the half-wave value.
+        A <b>full-wave (bridge) rectifier</b> uses four diodes arranged so that
+        <i> both</i> halves of the AC cycle are steered the same way through the
+        load. The negative halves are effectively flipped up.
+      </p>
+      <p>
+        So nothing is wasted and the output is twice as smooth as a half-wave one —
+        its average DC is double the half-wave value.
       </p>
       <div className="formula">
         V_out = |V_in| − 0.7 V{"\n"}
@@ -137,6 +140,29 @@ export default function FullWaveRectifierPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>পূর্ণ-তরঙ্গ (ব্রিজ) রেক্টিফায়ার</b> চারটি ডায়োড এমনভাবে সাজায় যাতে AC
+        চক্রের <i>দুই</i> অর্ধই একই দিকে লোডের মধ্য দিয়ে যায়। ঋণাত্মক অর্ধগুলো
+        কার্যত উল্টে ওপরে চলে আসে।
+      </p>
+      <p>
+        তাই কিছুই নষ্ট হয় না এবং আউটপুট অর্ধ-তরঙ্গের চেয়ে দ্বিগুণ মসৃণ — এর গড় DC
+        অর্ধ-তরঙ্গের মানের দ্বিগুণ।
+      </p>
+      <div className="formula">
+        V_out = |V_in| − 0.7 V{"\n"}
+        গড় DC ≈ 2·V_peak / π   (মসৃণ করার আগে)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        <b>মসৃণকারী ধারক</b> চালু করো: এটি সর্বোচ্চ মান পর্যন্ত চার্জ হয় ও কুঁজের
+        মাঝে ধীরে ধীরে ডিসচার্জ হয় (হলুদ রেখা), গর্তগুলো ভরে প্রায় সমতল DC দেয় —
+        ফোন চার্জার এভাবেই মেইন থেকে স্থির DC তৈরি করে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌘 Full-Wave Rectifier"
@@ -144,6 +170,7 @@ export default function FullWaveRectifierPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

@@ -94,10 +94,14 @@ export default function HalfWaveRectifierPage() {
   const explanation = (
     <>
       <p>
-        A <b>half-wave rectifier</b> uses a single diode. During the positive
-        half of each AC cycle the diode is forward-biased and passes the current;
-        during the negative half it is reverse-biased and <b>blocks</b> it. The
-        output is a series of positive pulses — rough DC.
+        Mains electricity is AC — it swings positive then negative — but most
+        gadgets need steady DC. A <b>rectifier</b> is the first step. The
+        <b> half-wave</b> version uses a single diode.
+      </p>
+      <p>
+        During the positive half of each AC cycle the diode is forward-biased and
+        passes the current; during the negative half it is reverse-biased and
+        <b> blocks</b> it. The output is a series of positive pulses — rough DC.
       </p>
       <div className="formula">
         V_out = V_in − 0.7 V   (only when V_in {">"} 0.7 V, else 0){"\n"}
@@ -111,6 +115,30 @@ export default function HalfWaveRectifierPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        মেইন বিদ্যুৎ AC — এটি ধনাত্মক থেকে ঋণাত্মকে দোলে — কিন্তু বেশিরভাগ যন্ত্রের
+        স্থির DC দরকার। <b>রেক্টিফায়ার</b> তার প্রথম ধাপ। <b>অর্ধ-তরঙ্গ</b> সংস্করণ
+        একটিমাত্র ডায়োড ব্যবহার করে।
+      </p>
+      <p>
+        প্রতিটি AC চক্রের ধনাত্মক অর্ধে ডায়োড সম্মুখ-ঝোঁকে থেকে প্রবাহ চালায়; ঋণাত্মক
+        অর্ধে বিমুখ-ঝোঁকে থেকে তা <b>আটকে</b> দেয়। আউটপুট হয় একগুচ্ছ ধনাত্মক স্পন্দন —
+        অমসৃণ DC।
+      </p>
+      <div className="formula">
+        V_out = V_in − 0.7 V   (কেবল যখন V_in {">"} 0.7 V, নয়তো 0){"\n"}
+        গড় DC ≈ V_peak / π
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        খেয়াল করো ইনপুটের অর্ধেক ফেলে দেওয়া হয়, তাই এটি অদক্ষ ও খুব "এবড়োখেবড়ো"।
+        <b> পূর্ণ-তরঙ্গ রেক্টিফায়ার</b> তরঙ্গের দুই অর্ধ ব্যবহার করে দুটি সমস্যাই সমাধান
+        করে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌗 Half-Wave Rectifier"
@@ -118,6 +146,7 @@ export default function HalfWaveRectifierPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

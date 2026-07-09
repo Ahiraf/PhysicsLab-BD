@@ -128,11 +128,16 @@ export default function PhotoelectricPage() {
   const explanation = (
     <>
       <p>
-        Light comes in packets called <b>photons</b>, each carrying energy
-        <b> E = hf</b>. A photon can eject an electron only if it carries more
-        than the metal's <b>work function</b> W. Below the threshold frequency,
-        even very bright light ejects <i>nothing</i> — this is what proved light
-        is quantised.
+        Shine light on a metal and it can knock electrons out. But there's a
+        puzzle: dim blue light works while bright red light does nothing. Einstein
+        explained it by saying light comes in packets called <b>photons</b>, each
+        carrying energy <b>E = hf</b>.
+      </p>
+      <p>
+        A single photon can eject an electron only if it carries more than the
+        metal's <b>work function</b> W. Below the threshold frequency, even very
+        bright light ejects <i>nothing</i> — this is what proved light is
+        quantised.
       </p>
       <div className="formula">
         E_photon = h·f{"\n"}
@@ -146,6 +151,30 @@ export default function PhotoelectricPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        ধাতুর উপর আলো ফেললে তা থেকে ইলেকট্রন ছিটকে বেরোতে পারে। কিন্তু একটি ধাঁধা:
+        ম্লান নীল আলো কাজ করে অথচ উজ্জ্বল লাল আলো কিছুই করে না। আইনস্টাইন এর ব্যাখ্যা
+        দিলেন এই বলে যে আলো <b>ফোটন</b> নামের প্যাকেটে আসে, প্রতিটি বহন করে শক্তি
+        <b> E = hf</b>।
+      </p>
+      <p>
+        একটি ফোটন কেবল তখনই ইলেকট্রন ছিটকাতে পারে যখন তা ধাতুর <b>কার্য অপেক্ষক</b> W-এর
+        চেয়ে বেশি শক্তি বহন করে। প্রান্তিক কম্পাঙ্কের নিচে উজ্জ্বলতম আলোও <i>কিছুই</i>
+        ছিটকায় না — এটিই প্রমাণ করেছিল আলো কোয়ান্টায়িত।
+      </p>
+      <div className="formula">
+        E_photon = h·f{"\n"}
+        ইলেকট্রনের সর্বোচ্চ KE = h·f − W    (কেবল যখন h·f {">"} W)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        কম্পাঙ্ক প্রান্তিক মান ছাড়িয়ে বাড়ালে ইলেকট্রন দ্রুততর ছিটকায় (বেশি KE)।
+        <b> তীব্রতা</b> বাড়ালে কেবল <i>বেশি সংখ্যক</i> ইলেকট্রন বের হয়, দ্রুততর নয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="💡 Photoelectric Effect"
@@ -153,6 +182,7 @@ export default function PhotoelectricPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

@@ -107,10 +107,14 @@ export default function PendulumGPage() {
   const explanation = (
     <>
       <p>
-        A <b>simple pendulum</b> keeps almost perfect time because its period
-        depends only on the length and the local gravity — not on the mass or (for
-        small swings) the amplitude. Turn that around and you can <b>measure g</b>
-        just by timing the swings.
+        A <b>simple pendulum</b> keeps almost perfect time, and that is more useful
+        than it sounds. Its period depends only on its length and the local
+        gravity — <i>not</i> on the mass, and (for small swings) not on how far it
+        swings.
+      </p>
+      <p>
+        Turn that around and the pendulum becomes an instrument: just time the
+        swings and you can <b>measure g</b> at your location.
       </p>
       <div className="formula">
         T = 2π·√(L / g)      ⟹      g = 4π²·L / T²
@@ -123,6 +127,28 @@ export default function PendulumGPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>সরল দোলক</b> প্রায় নিখুঁত সময় রাখে, আর এটি শোনার চেয়ে বেশি কাজের। এর
+        পর্যায়কাল কেবল দৈর্ঘ্য ও স্থানীয় অভিকর্ষের উপর নির্ভর করে — ভরের উপর
+        <i> নয়</i>, এবং (ছোট দোলনের জন্য) দোলনের বিস্তারের উপরও নয়।
+      </p>
+      <p>
+        উল্টো করে ভাবলে দোলকটি একটি যন্ত্র হয়ে যায়: শুধু দোলনের সময় মেপে তোমার
+        স্থানের <b>g নির্ণয়</b> করা যায়।
+      </p>
+      <div className="formula">
+        T = 2π·√(L / g)      ⟹      g = 4π²·L / T²
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        <b>চাঁদ</b> চাপলে একই দোলক অলসভাবে দোলে (ছোট g, বড় পর্যায়কাল); <b>বৃহস্পতি</b>
+        চাপলে দ্রুত আগে-পিছে ছোটে। সুতো লম্বা করলেও ধীর হয় — তবে দৈর্ঘ্য চারগুণ করলে
+        পর্যায়কাল কেবল দ্বিগুণ হয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="⏳ Pendulum & g on Planets"
@@ -130,6 +156,7 @@ export default function PendulumGPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

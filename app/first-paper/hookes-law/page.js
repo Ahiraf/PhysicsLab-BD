@@ -114,10 +114,14 @@ export default function HookesLawPage() {
   const explanation = (
     <>
       <p>
-        <b>Hooke's law</b>: for an elastic spring the extension is directly
-        proportional to the stretching force — double the load, double the
-        stretch. This holds only up to the <b>elastic limit</b>; beyond it the
-        spring is permanently deformed (the graph bends over, red).
+        <b>Hooke's law</b> is the simplest rule of elasticity: for a spring, the
+        stretch is directly proportional to the pulling force. Double the load and
+        you double the stretch, triple it and you triple the stretch.
+      </p>
+      <p>
+        But this only holds up to the <b>elastic limit</b>. Pull harder than that
+        and the spring is permanently deformed — it no longer springs fully back,
+        and the graph bends over (red).
       </p>
       <div className="formula">
         F = k·x     ⟹     x = F / k{"\n"}
@@ -131,6 +135,29 @@ export default function HookesLawPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>হুকের সূত্র</b> স্থিতিস্থাপকতার সবচেয়ে সহজ নিয়ম: স্প্রিং-এর প্রসারণ টানের
+        সমানুপাতিক। ভার দ্বিগুণ করলে প্রসারণ দ্বিগুণ, তিনগুণ করলে তিনগুণ।
+      </p>
+      <p>
+        তবে এটি কেবল <b>স্থিতিস্থাপক সীমা</b> পর্যন্ত খাটে। এর চেয়ে জোরে টানলে
+        স্প্রিং স্থায়ীভাবে বিকৃত হয় — আর পুরোপুরি আগের অবস্থায় ফেরে না, এবং লেখচিত্র
+        বেঁকে যায় (লাল)।
+      </p>
+      <div className="formula">
+        F = k·x     ⟹     x = F / k{"\n"}
+        সঞ্চিত স্থিতিস্থাপক শক্তি = ½·k·x²{"\n"}
+        ইয়ং-এর গুণাঙ্ক Y = পীড়ন / বিকৃতি = (F/A) / (x/L)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        অধিক শক্ত স্প্রিং (বড় k) একই ভারে কম প্রসারিত হয়। ভার স্থিতিস্থাপক সীমা
+        ছাড়িয়ে গেলে পদার্থটি আর আগের অবস্থায় ফিরে আসে না।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🪝 Hooke's Law & Elasticity"
@@ -138,6 +165,7 @@ export default function HookesLawPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

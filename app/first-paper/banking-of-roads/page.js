@@ -106,11 +106,15 @@ export default function BankingOfRoadsPage() {
   const explanation = (
     <>
       <p>
-        On a flat road, only <b>friction</b> can turn a car around a bend. If the
-        road is <b>banked</b> (tilted), the <b>normal force</b> N leans inward and
-        its horizontal part can supply the <b>centripetal force</b> by itself.
+        Why are highway bends and race tracks tilted? On a <b>flat</b> road, only
+        <b> friction</b> can turn a car around a bend — and friction can run out.
+        If the road is <b>banked</b> (tilted inward), the <b>normal force</b> N
+        leans inward, and its horizontal part can supply the needed
+        <b> centripetal force</b> all by itself.
+      </p>
+      <p>
         Balancing the horizontal (N·sinθ = mv²/r) and vertical (N·cosθ = mg)
-        equations gives the ideal angle.
+        equations gives the one <b>ideal angle</b> for a given speed and radius.
       </p>
       <div className="formula">
         tanθ = v² / (r·g)      ⟹      v_ideal = √(r·g·tanθ)
@@ -125,6 +129,30 @@ export default function BankingOfRoadsPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        মহাসড়কের বাঁক আর রেসিং ট্র্যাক কেন হেলানো থাকে? <b>সমতল</b> রাস্তায় বাঁক
+        নেওয়ার জন্য শুধু <b>ঘর্ষণ</b> কাজ করে — আর ঘর্ষণ যথেষ্ট নাও হতে পারে।
+        রাস্তা <b>ঢালু (banked)</b> করলে <b>অভিলম্ব বল</b> N ভেতরের দিকে হেলে যায়,
+        এবং এর আনুভূমিক অংশ একাই প্রয়োজনীয় <b>কেন্দ্রমুখী বল</b> জোগাতে পারে।
+      </p>
+      <p>
+        আনুভূমিক (N·sinθ = mv²/r) ও উল্লম্ব (N·cosθ = mg) সমীকরণ দুটি সমান করলে
+        নির্দিষ্ট বেগ ও ব্যাসার্ধের জন্য একটিমাত্র <b>আদর্শ কোণ</b> পাওয়া যায়।
+      </p>
+      <div className="formula">
+        tanθ = v² / (r·g)      ⟹      v_ideal = √(r·g·tanθ)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ঢাল কোণকে আদর্শ মানের সমান করলে কোনো ঘর্ষণই লাগে না। খেয়াল করো, কোণটি
+        গাড়ির ভরের উপর নির্ভর করে না। নিরাপদ বেগের চেয়ে জোরে গেলে গাড়ি
+        <b> ওপরে-বাইরে</b> পিছলাতে চায়; ধীরে গেলে <b>নিচে-ভেতরে</b> নেমে যায় —
+        তাই ট্র্যাক ও র‍্যাম্প তাদের নকশা-বেগের জন্য ঢালু করা হয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🏎️ Banking of Roads"
@@ -132,6 +160,7 @@ export default function BankingOfRoadsPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

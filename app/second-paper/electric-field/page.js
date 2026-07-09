@@ -99,10 +99,15 @@ export default function ElectricFieldPage() {
   const explanation = (
     <>
       <p>
-        Every charge creates an <b>electric field</b> — the blue arrows show which
-        way a tiny positive test charge would be pushed. Field lines point away
-        from + charges and into − charges. Two charges also feel a direct force
-        given by <b>Coulomb's law</b>: like signs repel, opposite signs attract.
+        Every charge fills the space around it with an <b>electric field</b> — an
+        invisible influence. The blue arrows show which way a tiny positive test
+        charge would be pushed: field lines point away from + charges and into −
+        charges.
+      </p>
+      <p>
+        Two charges also feel a direct force on each other given by <b>Coulomb's
+        law</b>: like signs repel, opposite signs attract, and the strength falls
+        off with the square of the distance.
       </p>
       <div className="formula">
         F = k · |q₁·q₂| / r²      (k = 9 × 10⁹ N·m²/C²){"\n"}
@@ -115,6 +120,28 @@ export default function ElectricFieldPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        প্রতিটি আধান তার চারপাশের জায়গা একটি <b>তড়িৎ ক্ষেত্র</b> দিয়ে ভরে দেয় — একটি
+        অদৃশ্য প্রভাব। নীল তীরগুলো দেখায় একটি ক্ষুদ্র ধনাত্মক পরীক্ষা-আধান কোন দিকে
+        ঠেলা খাবে: ক্ষেত্ররেখা + আধান থেকে দূরে ও − আধানের দিকে যায়।
+      </p>
+      <p>
+        দুটি আধান পরস্পরের উপর সরাসরি বলও অনুভব করে, যা <b>কুলম্বের সূত্র</b> দেয়:
+        সমচিহ্ন বিকর্ষণ, বিপরীত চিহ্ন আকর্ষণ করে, আর দূরত্বের বর্গের সাথে বল কমে।
+      </p>
+      <div className="formula">
+        F = k · |q₁·q₂| / r²      (k = 9 × 10⁹ N·m²/C²){"\n"}
+        বিন্দু আধানের ক্ষেত্র:  E = k · q / r²
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        আধান দুটি বিপরীত করে দেখো ক্ষেত্ররেখা তাদের জুড়ে দেয়। দূরে সরালে বল দ্রুত কমে
+        — এটিই <b>বর্গ-ব্যস্তানুপাতিক</b> সূত্র।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="⚡ Electric Field & Coulomb's Law"
@@ -122,6 +149,7 @@ export default function ElectricFieldPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

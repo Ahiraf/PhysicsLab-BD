@@ -121,8 +121,12 @@ export default function DiffractionGratingPage() {
       <p>
         A <b>diffraction grating</b> is a slide ruled with thousands of fine,
         equally spaced slits. Light from all of them interferes, and it only adds
-        up brightly at a few precise angles — the <b>orders</b>. The more slits
-        take part, the <b>sharper</b> each bright line becomes.
+        up brightly at a few precise angles — the <b>orders</b>.
+      </p>
+      <p>
+        The more slits take part, the <b>sharper</b> each bright line becomes,
+        because a stray angle that's even slightly off gets cancelled by some
+        distant slit.
       </p>
       <div className="formula">
         d·sinθ = m·λ      (m = 0, ±1, ±2 …){"\n"}
@@ -137,6 +141,30 @@ export default function DiffractionGratingPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>ডিফ্র্যাকশন গ্রেটিং</b> হলো একটি স্লাইড, যাতে হাজার হাজার সূক্ষ্ম, সমদূরত্বের
+        চিড় কাটা থাকে। এদের সবার আলো ব্যতিচার করে, আর কেবল কয়েকটি নির্দিষ্ট কোণে
+        উজ্জ্বলভাবে যোগ হয় — এগুলোকে বলে <b>ক্রম (order)</b>।
+      </p>
+      <p>
+        যত বেশি চিড় অংশ নেয়, প্রতিটি উজ্জ্বল রেখা তত <b>তীক্ষ্ণ</b> হয়, কারণ সামান্য
+        বিচ্যুত কোনো কোণ কোনো দূরের চিড় দ্বারা কাটাকাটি হয়ে যায়।
+      </p>
+      <div className="formula">
+        d·sinθ = m·λ      (m = 0, ±1, ±2 …){"\n"}
+        d = 1 / (প্রতি মিটারে রেখা সংখ্যা)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        চিড়ের সংখ্যা N বাড়িয়ে দেখো ঝাপসা চূড়াগুলো সরু উজ্জ্বল রেখায় পরিণত হয় — এই
+        নিখুঁততার জন্যই গ্রেটিং তরঙ্গদৈর্ঘ্য এত ভালোভাবে মাপে। সূক্ষ্মতর গ্রেটিং (বেশি
+        রেখা/mm) ক্রমগুলোকে আরও দূরে ছড়িয়ে দেয়, আর প্রতিটি তরঙ্গদৈর্ঘ্য নিজ কোণে পড়ে
+        (একটি বর্ণালী)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌈 Diffraction Grating"
@@ -144,6 +172,7 @@ export default function DiffractionGratingPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

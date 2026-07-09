@@ -93,10 +93,15 @@ export default function DoubleSlitPage() {
   const explanation = (
     <>
       <p>
-        When light passes through two narrow slits, the two waves overlap and
-        <b> interfere</b>. Where crests meet crests you get a <b>bright</b> fringe
-        (constructive); where a crest meets a trough it is <b>dark</b>
-        (destructive). This was Young's proof that light behaves as a wave.
+        When light passes through two narrow slits, the two emerging waves overlap
+        and <b>interfere</b>. Where crest meets crest you get a <b>bright</b>
+        fringe (constructive); where a crest meets a trough it is <b>dark</b>
+        (destructive).
+      </p>
+      <p>
+        Those neat, evenly spaced bright and dark bands could never come from tiny
+        particles — this was Young's classic proof that light behaves as a
+        <b> wave</b>.
       </p>
       <div className="formula">
         Bright fringes:  d·sinθ = m·λ{"\n"}
@@ -110,6 +115,28 @@ export default function DoubleSlitPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        আলো যখন দুটি সরু চিড় দিয়ে যায়, বেরিয়ে আসা দুই তরঙ্গ উপরিপাতিত হয়ে
+        <b> ব্যতিচার</b> করে। যেখানে চূড়ার সাথে চূড়া মেলে সেখানে <b>উজ্জ্বল</b> পটি
+        (গঠনমূলক); যেখানে চূড়ার সাথে খাঁজ মেলে সেখানে <b>অন্ধকার</b> পটি (ধ্বংসাত্মক)।
+      </p>
+      <p>
+        এই সুসম, সমদূরত্বের উজ্জ্বল-অন্ধকার পটি ক্ষুদ্র কণা থেকে কখনো আসতে পারত না —
+        এটিই ইয়ং-এর বিখ্যাত প্রমাণ যে আলো <b>তরঙ্গের</b> মতো আচরণ করে।
+      </p>
+      <div className="formula">
+        উজ্জ্বল পটি:  d·sinθ = m·λ{"\n"}
+        পর্দায় পটির ব্যবধান:  w = λ·L / d
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        বড় তরঙ্গদৈর্ঘ্য (লালের দিকে) বা বড় পর্দা-দূরত্ব পটিগুলো চওড়া করে; চিড় দুটি
+        কাছাকাছি আনলে (ছোট d) এরাও ছড়িয়ে পড়ে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="〰️ Young's Double-Slit"
@@ -117,6 +144,7 @@ export default function DoubleSlitPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

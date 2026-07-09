@@ -120,10 +120,15 @@ export default function OrbitsPage() {
   const explanation = (
     <>
       <p>
-        Gravity from the star pulls the planet straight inward, but the planet's
-        sideways speed keeps it "falling around" the star instead of into it —
-        that is an <b>orbit</b>. Too slow and it spirals in; too fast and it
-        escapes.
+        Why doesn't the Moon fall onto Earth? It actually is falling — it just
+        keeps missing! Gravity from the star pulls the planet straight inward, but
+        the planet's sideways speed carries it "past" the star just as fast as it
+        falls.
+      </p>
+      <p>
+        The result is that it keeps <b>falling around</b> the star instead of into
+        it — that endless falling-around is an <b>orbit</b>. Too slow and it
+        spirals in; too fast and it escapes.
       </p>
       <div className="formula">
         F = G·M·m / r²     (points toward the star){"\n"}
@@ -137,6 +142,29 @@ export default function OrbitsPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        চাঁদ পৃথিবীর উপর পড়ে যায় না কেন? আসলে সে পড়ছেই — কেবল বারবার ফসকে যাচ্ছে!
+        তারার অভিকর্ষ গ্রহটিকে সোজা ভেতরের দিকে টানে, কিন্তু গ্রহের পাশের দিকের বেগ
+        তাকে ঠিক ততটাই দ্রুত তারার "পাশ কাটিয়ে" নিয়ে যায় যতটা সে পড়ে।
+      </p>
+      <p>
+        ফলে সে তারার ভেতরে না পড়ে তার <b>চারপাশে পড়তে</b> থাকে — এই অবিরাম চারপাশে
+        পড়াই <b>কক্ষপথ</b>। খুব ধীর হলে ভেতরে ঢুকে পড়ে; খুব দ্রুত হলে মুক্তি পায়।
+      </p>
+      <div className="formula">
+        F = G·M·m / r²     (তারার দিকে){"\n"}
+        বৃত্তীয় কক্ষপথের বেগ: v = √(G·M / r)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        প্রায়-নিখুঁত বৃত্তের জন্য উৎক্ষেপণ বেগ প্রস্তাবিত মানের কাছে রাখো। একটু বেশি
+        দিলে <b>উপবৃত্ত</b> (কেপলারের প্রথম সূত্র); অনেক বেশি দিলে গ্রহ চিরতরে ছিটকে
+        যায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🪐 Orbit Simulator"
@@ -144,6 +172,7 @@ export default function OrbitsPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

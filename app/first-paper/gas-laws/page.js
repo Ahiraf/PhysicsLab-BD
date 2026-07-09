@@ -102,10 +102,14 @@ export default function GasLawsPage() {
   const explanation = (
     <>
       <p>
-        A gas is countless molecules zipping about and bouncing off the walls —
-        those collisions are the <b>pressure</b>. Squeeze the piston (less
-        volume) and collisions get more frequent, so pressure rises. Heat the gas
-        and the molecules speed up, also raising pressure.
+        Zoom into a gas and it is really countless tiny molecules zipping about
+        and bouncing off the container walls. Each bounce is a tiny push — add up
+        all those pushes and you get <b>pressure</b>.
+      </p>
+      <p>
+        Squeeze the piston (less <b>volume</b>) and the bounces get more frequent,
+        so pressure rises. Heat the gas and the molecules speed up, hitting harder
+        and more often — pressure rises again.
       </p>
       <div className="formula">
         P·V = n·R·T{"\n"}
@@ -118,6 +122,28 @@ export default function GasLawsPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        গ্যাসের ভেতরে তাকালে দেখা যায় এটি আসলে অসংখ্য ক্ষুদ্র অণু, যারা ছোটাছুটি করে
+        পাত্রের দেয়ালে ধাক্কা খায়। প্রতিটি ধাক্কা একটি ছোট্ট চাপ — এই সব ধাক্কা যোগ
+        করলে পাওয়া যায় <b>চাপ</b>।
+      </p>
+      <p>
+        পিস্টন চেপে <b>আয়তন</b> কমালে ধাক্কা ঘন ঘন হয়, তাই চাপ বাড়ে। গ্যাস গরম করলে
+        অণুগুলো দ্রুততর হয়, জোরে ও ঘন ঘন আঘাত করে — চাপ আবার বাড়ে।
+      </p>
+      <div className="formula">
+        P·V = n·R·T{"\n"}
+        বয়েলের সূত্র (T স্থির): P ∝ 1/V     চার্লসের সূত্র (P স্থির): V ∝ T
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        তাপমাত্রা স্থির রেখে আয়তন অর্ধেক করলে চাপ দ্বিগুণ হয় (বয়েল)। আয়তন স্থির রেখে
+        তাপমাত্রা দ্বিগুণ করলে চাপও দ্বিগুণ হয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎈 Ideal Gas Laws (PV = nRT)"
@@ -125,6 +151,7 @@ export default function GasLawsPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

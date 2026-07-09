@@ -175,11 +175,14 @@ export default function CarnotEnginePage() {
   const explanation = (
     <>
       <p>
-        A <b>Carnot engine</b> is the ideal heat engine. It takes in heat
-        <b> Qh</b> from a hot reservoir, converts part of it to useful <b>work W</b>,
-        and dumps the rest <b>Qc</b> into a cold reservoir. Its four reversible
-        steps — heat in (red), adiabatic expansion (grey), heat out (blue),
-        adiabatic compression — form the loop; the enclosed <b>area is the work</b>.
+        A <b>Carnot engine</b> is the ideal, most efficient heat engine possible.
+        It takes in heat <b>Qh</b> from a hot reservoir, converts part of it into
+        useful <b>work W</b>, and dumps the rest <b>Qc</b> into a cold reservoir.
+      </p>
+      <p>
+        Its four reversible steps — heat in (red), adiabatic expansion (grey), heat
+        out (blue), adiabatic compression — form a closed loop, and the
+        <b> area enclosed by the loop is the work</b> done per cycle.
       </p>
       <div className="formula">
         η = W / Qh = 1 − Qc / Qh = 1 − Tc / Th{"\n"}
@@ -193,6 +196,30 @@ export default function CarnotEnginePage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>কার্নো ইঞ্জিন</b> হলো সম্ভাব্য সবচেয়ে দক্ষ আদর্শ তাপ ইঞ্জিন। এটি উষ্ণ
+        উৎস থেকে তাপ <b>Qh</b> গ্রহণ করে, এর কিছু অংশ কার্যকর <b>কাজ W</b>-এ রূপান্তর
+        করে, আর বাকি <b>Qc</b> শীতল উৎসে ছেড়ে দেয়।
+      </p>
+      <p>
+        এর চারটি প্রত্যাবর্তী ধাপ — তাপ গ্রহণ (লাল), রুদ্ধতাপ প্রসারণ (ধূসর), তাপ
+        বর্জন (নীল), রুদ্ধতাপ সংকোচন — একটি বদ্ধ লুপ তৈরি করে, আর <b>লুপের ভেতরের
+        ক্ষেত্রফলই প্রতি চক্রে কৃত কাজ</b>।
+      </p>
+      <div className="formula">
+        η = W / Qh = 1 − Qc / Qh = 1 − Tc / Th{"\n"}
+        একই দুই তাপমাত্রার মধ্যে কোনো বাস্তব ইঞ্জিন একে ছাড়াতে পারে না।
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দক্ষতা <i>কেবল</i> দুই তাপমাত্রার উপর নির্ভর করে। Th বাড়ালে বা Tc কমালে লুপ
+        মোটা হয় ও η বাড়ে — তবে η = ১০০% হতে Tc = 0 K লাগত, যা অসম্ভব (তাপগতিবিদ্যার
+        দ্বিতীয় সূত্র)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔥 Carnot Engine"
@@ -200,6 +227,7 @@ export default function CarnotEnginePage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

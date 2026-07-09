@@ -107,10 +107,14 @@ export default function WavesPage() {
   const explanation = (
     <>
       <p>
-        A wave carries <b>energy</b> across space while each particle only moves
-        up and down (watch the red dot). The <b>wavelength</b> λ is the distance
-        of one full cycle, the <b>frequency</b> f is how many cycles pass each
-        second, and the <b>amplitude</b> sets how tall the wave is.
+        A wave is a clever trick: it carries <b>energy</b> across a distance while
+        the material itself barely moves. Watch the red dot — each particle only
+        bobs up and down in place, yet the wave marches steadily to the right.
+      </p>
+      <p>
+        The <b>wavelength</b> λ is the length of one full cycle, the
+        <b> frequency</b> f is how many cycles pass each second, and the
+        <b> amplitude</b> sets how tall the wave is (its energy).
       </p>
       <div className="formula">
         y = A·sin(kx − ωt),   k = 2π/λ,   ω = 2πf{"\n"}
@@ -123,6 +127,29 @@ export default function WavesPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        তরঙ্গ একটি চমৎকার কৌশল: এটি <b>শক্তি</b>কে দূরত্বজুড়ে বহন করে অথচ মাধ্যম নিজে
+        প্রায় নড়েই না। লাল বিন্দুটি দেখো — প্রতিটি কণা কেবল একই জায়গায় ওপর-নিচ দোলে,
+        তবু তরঙ্গটি স্থিরভাবে ডানে এগোয়।
+      </p>
+      <p>
+        <b>তরঙ্গদৈর্ঘ্য</b> λ হলো একটি পূর্ণ চক্রের দৈর্ঘ্য, <b>কম্পাঙ্ক</b> f হলো
+        প্রতি সেকেন্ডে কতগুলো চক্র যায়, আর <b>বিস্তার</b> ঠিক করে তরঙ্গ কতটা উঁচু (এর
+        শক্তি)।
+      </p>
+      <div className="formula">
+        y = A·sin(kx − ωt),   k = 2π/λ,   ω = 2πf{"\n"}
+        তরঙ্গের বেগ:  v = f·λ = λ / T
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        কম্পাঙ্ক <i>বা</i> তরঙ্গদৈর্ঘ্য বাড়ালে তরঙ্গ দ্রুত চলে। বিস্তার উচ্চতা (ও
+        শক্তি) বদলায়, কিন্তু বেগ নয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌊 Wave Simulator"
@@ -130,6 +157,7 @@ export default function WavesPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

@@ -124,16 +124,39 @@ export default function OhmsLawPage() {
   const explanation = (
     <>
       <p>
-        <b>Ohm's law</b> says the current through a conductor is the voltage
-        across it divided by its resistance. More voltage pushes more current;
-        more resistance holds it back. Watch the blue charges speed up as the
-        current rises.
+        <b>Ohm's law</b> is the most-used rule in electricity: the current through
+        a conductor equals the voltage across it divided by its resistance. Think
+        of voltage as the push and resistance as how much the wire holds the flow
+        back.
+      </p>
+      <p>
+        More voltage pushes more current through; more resistance lets less
+        through. Watch the blue charges speed up as the current rises.
       </p>
       <div className="formula">I = V / R     P = V · I = I²·R</div>
       <p style={{ marginBottom: 0 }}>
         Raise the voltage and the current increases in proportion. Raise the
         resistance and the current drops. The flowing dots move faster when the
         current is larger.
+      </p>
+    </>
+  );
+
+  const explanationBn = (
+    <>
+      <p>
+        <b>ওহমের সূত্র</b> বিদ্যুতের সবচেয়ে বেশি ব্যবহৃত নিয়ম: কোনো পরিবাহীর মধ্য
+        দিয়ে প্রবাহ = তার দুই প্রান্তের ভোল্টেজ ÷ রোধ। ভোল্টেজকে ঠেলা আর রোধকে তারের
+        প্রবাহ-বাধা হিসেবে ভাবো।
+      </p>
+      <p>
+        বেশি ভোল্টেজ বেশি প্রবাহ ঠেলে; বেশি রোধ কম প্রবাহ যেতে দেয়। প্রবাহ বাড়ার সাথে
+        নীল আধানগুলো দ্রুততর হচ্ছে দেখো।
+      </p>
+      <div className="formula">I = V / R     P = V · I = I²·R</div>
+      <p style={{ marginBottom: 0 }}>
+        ভোল্টেজ বাড়ালে প্রবাহ সমানুপাতিক হারে বাড়ে। রোধ বাড়ালে প্রবাহ কমে। প্রবাহ
+        বেশি হলে চলমান বিন্দুগুলো দ্রুত চলে।
       </p>
     </>
   );
@@ -145,6 +168,7 @@ export default function OhmsLawPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

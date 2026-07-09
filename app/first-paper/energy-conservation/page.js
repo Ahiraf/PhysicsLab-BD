@@ -135,10 +135,15 @@ export default function EnergyConservationPage() {
   const explanation = (
     <>
       <p>
-        As the ball rolls down, <b>gravitational potential energy</b> (PE)
-        changes into <b>kinetic energy</b> (KE). At the bottom PE is smallest and
-        the ball is fastest; climbing the far side turns KE back into PE. The two
-        bars always add up to the same total.
+        Energy is never created or destroyed — it only changes form. As the ball
+        rolls down, its <b>gravitational potential energy</b> (PE, the energy of
+        height) turns into <b>kinetic energy</b> (KE, the energy of motion). At the
+        bottom PE is smallest and the ball is fastest; climbing the far side turns
+        KE back into PE.
+      </p>
+      <p>
+        The two bars always add up to the same total — that constant total is the
+        whole idea of <b>conservation of energy</b>.
       </p>
       <div className="formula">
         PE = m·g·h     KE = ½·m·v²{"\n"}
@@ -151,6 +156,29 @@ export default function EnergyConservationPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        শক্তি কখনো সৃষ্টি বা ধ্বংস হয় না — কেবল রূপ বদলায়। বলটি নিচে গড়িয়ে নামার
+        সময় এর <b>মহাকর্ষীয় বিভব শক্তি</b> (PE, উচ্চতার শক্তি) <b>গতিশক্তিতে</b>
+        (KE, গতির শক্তি) রূপান্তরিত হয়। নিচে PE সবচেয়ে কম আর বলটি সবচেয়ে দ্রুত;
+        অপর পাশে ওঠার সময় KE আবার PE-তে ফিরে যায়।
+      </p>
+      <p>
+        দুটি দণ্ড সবসময় একই মোট মান দেয় — এই ধ্রুব মোটই হলো <b>শক্তির নিত্যতা</b>-র
+        মূল কথা।
+      </p>
+      <div className="formula">
+        PE = m·g·h     KE = ½·m·v²{"\n"}
+        মোট শক্তি PE + KE = ধ্রুবক   ⟹   v_bottom = √(2·g·h)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        খেয়াল করো, তলার সর্বোচ্চ দ্রুতি কেবল <b>উচ্চতার</b> উপর নির্ভর করে, ভরের উপর
+        নয়। রোলার-কোস্টার বা বাটির ভেতর বলের পেছনে এই ধারণাই কাজ করে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎢 Conservation of Energy"
@@ -158,6 +186,7 @@ export default function EnergyConservationPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

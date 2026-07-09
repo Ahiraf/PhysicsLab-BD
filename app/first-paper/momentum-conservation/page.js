@@ -151,11 +151,15 @@ export default function MomentumConservationPage() {
   const explanation = (
     <>
       <p>
-        With no outside push, the total <b>momentum</b> of a system can't change.
-        In the <b>linear</b> case a still object bursts apart, yet the momenta of
-        the two pieces stay equal and opposite so the total remains zero — that's
-        recoil (a gun kicks back, a rocket pushes exhaust down). In the
-        <b> angular</b> case the same idea applies to spin.
+        With no outside push, the total <b>momentum</b> of a system can't change —
+        this is one of physics' deepest rules. In the <b>linear</b> case a still
+        object bursts apart, yet the momenta of the two pieces stay equal and
+        opposite so the total remains zero. That is recoil: a gun kicks back, a
+        rocket pushes exhaust down to fly up.
+      </p>
+      <p>
+        The same idea applies to spin — this time it's <b>angular momentum</b>
+        L = I·ω that stays constant.
       </p>
       <div className="formula">
         Linear:   m₁v₁ = m₂v₂   (total p = 0){"\n"}
@@ -170,6 +174,29 @@ export default function MomentumConservationPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        বাইরের কোনো বল না থাকলে কোনো সিস্টেমের মোট <b>ভরবেগ</b> পরিবর্তিত হতে পারে না
+        — এটি পদার্থবিজ্ঞানের গভীরতম নিয়মগুলোর একটি। <b>রৈখিক</b> ক্ষেত্রে একটি স্থির
+        বস্তু ফেটে গেলেও দুই টুকরোর ভরবেগ সমান ও বিপরীত থাকে, তাই মোট শূন্যই থাকে।
+        এটিই পশ্চাৎধাবন: বন্দুক পেছনে ধাক্কা খায়, রকেট নিচে গ্যাস ঠেলে ওপরে ওঠে।
+      </p>
+      <p>
+        একই ধারণা ঘূর্ণনেও খাটে — এবার স্থির থাকে <b>কৌণিক ভরবেগ</b> L = I·ω।
+      </p>
+      <div className="formula">
+        রৈখিক:   m₁v₁ = m₂v₂   (মোট p = 0){"\n"}
+        কৌণিক:  L = I·ω = ধ্রুবক   ⟹   ভেতরে টানলে (I↓) ω↑
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        "পশ্চাৎধাবনে" হালকা টুকরোটি দ্রুত ছিটকে যায়। "স্কেটার"-এ ভরকে ভেতরে টানলে
+        জড়তার ভ্রামক কমে, তাই L স্থির রাখতে ঘূর্ণন দ্রুততর হয় — ঠিক যেভাবে ফিগার
+        স্কেটার হাত গুটিয়ে ঘূর্ণন বাড়ায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="💥 Conservation of Momentum"
@@ -177,6 +204,7 @@ export default function MomentumConservationPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

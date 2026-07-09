@@ -139,11 +139,14 @@ export default function DipoleTorquePage() {
   const explanation = (
     <>
       <p>
-        An <b>electric dipole</b> is two equal and opposite charges a small
-        distance apart. Its <b>dipole moment</b> is p = q·2a, pointing from −q to
-        +q. In a uniform field the two charges feel equal but opposite forces —
-        <b> no net push</b>, but a <b>couple</b> that twists the dipole to line up
-        with the field.
+        An <b>electric dipole</b> is just two equal and opposite charges held a
+        small distance apart. Its <b>dipole moment</b> p = q·2a points from the −q
+        charge to the +q charge.
+      </p>
+      <p>
+        In a uniform field the two charges feel equal but opposite forces — so
+        there is <b>no net push</b>, but there is a <b>couple</b> (a pair of
+        forces) that twists the dipole until it lines up with the field.
       </p>
       <div className="formula">
         p = q · 2a{"\n"}
@@ -158,6 +161,29 @@ export default function DipoleTorquePage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>বৈদ্যুতিক ডাইপোল</b> হলো সামান্য দূরত্বে রাখা সমান ও বিপরীত দুটি আধান। এর
+        <b> ডাইপোল ভ্রামক</b> p = q·2a, যা −q আধান থেকে +q আধানের দিকে নির্দেশ করে।
+      </p>
+      <p>
+        সুষম ক্ষেত্রে দুই আধান সমান কিন্তু বিপরীত বল অনুভব করে — তাই <b>কোনো নিট
+        ঠেলা নেই</b>, তবে একটি <b>যুগল (couple)</b> থাকে যা ডাইপোলটিকে ক্ষেত্রের সাথে
+        মিল না হওয়া পর্যন্ত ঘোরায়।
+      </p>
+      <div className="formula">
+        p = q · 2a{"\n"}
+        টর্ক:  τ = p·E·sinθ      শক্তি:  U = −p·E·cosθ
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        <b>Release</b> চেপে দেখো এটি কম্পাসের কাঁটার মতো ঘুরে ক্ষেত্রের সাথে মিলে যায়।
+        টর্ক θ = 90°-তে সর্বোচ্চ আর মিলে গেলে (θ = 0°, সর্বনিম্ন শক্তি) বা ঠিক বিপরীতে
+        (θ = 180°, অস্থিতিশীল) শূন্য। এজন্যই পোলার অণু ক্ষেত্রে ঘুরে যায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🧭 Dipole in a Uniform Field"
@@ -165,6 +191,7 @@ export default function DipoleTorquePage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

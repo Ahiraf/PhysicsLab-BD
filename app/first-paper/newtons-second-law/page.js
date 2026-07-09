@@ -133,10 +133,14 @@ export default function NewtonsSecondLawPage() {
   const explanation = (
     <>
       <p>
-        <b>Newton's second law</b> says a net force makes a mass accelerate. The
-        push (blue) has to beat <b>friction</b> (red) first; only the leftover
-        <b> net force</b> accelerates the cart. Heavier carts accelerate less for
-        the same net force.
+        <b>Newton's second law</b> is the heart of mechanics: a <b>net</b> force
+        makes a mass accelerate. But "net" is the key word. The push (blue) first
+        has to overcome <b>friction</b> (red); only the leftover — the <b>net
+        force</b> — actually accelerates the cart.
+      </p>
+      <p>
+        And the heavier the cart, the less it accelerates for the same net force,
+        because mass is a measure of how much a body resists changes in motion.
       </p>
       <div className="formula">
         F_net = F_applied − friction     friction = μ·m·g{"\n"}
@@ -149,6 +153,29 @@ export default function NewtonsSecondLawPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>নিউটনের দ্বিতীয় সূত্র</b> বলবিদ্যার প্রাণ: <b>নিট</b> বল একটি ভরকে ত্বরিত
+        করে। কিন্তু "নিট" শব্দটাই আসল। প্রয়োগকৃত ঠেলাকে (নীল) প্রথমে <b>ঘর্ষণ</b>
+        (লাল) অতিক্রম করতে হয়; যেটুকু বাকি থাকে — সেই <b>নিট বল</b>ই আসলে গাড়িটিকে
+        ত্বরিত করে।
+      </p>
+      <p>
+        আর গাড়ি যত ভারী, একই নিট বলে তত কম ত্বরণ হয়, কারণ ভর হলো গতির পরিবর্তনে
+        বস্তুর বাধার পরিমাপ।
+      </p>
+      <div className="formula">
+        F_net = F_applied − ঘর্ষণ     ঘর্ষণ = μ·m·g{"\n"}
+        a = F_net / m
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        বল ঘর্ষণের মানের নিচে নামালে গাড়ি একদমই নড়ে না। ভর বাড়ালে একই বলে কম ত্বরণ
+        পাওয়া যায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🛒 Newton's Second Law (F = ma)"
@@ -156,6 +183,7 @@ export default function NewtonsSecondLawPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

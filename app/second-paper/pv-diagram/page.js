@@ -102,10 +102,13 @@ export default function PVDiagramPage() {
   const explanation = (
     <>
       <p>
-        Every state of a gas is a point on a <b>P–V diagram</b>. Change volume at
-        fixed temperature and you slide along an <b>isotherm</b> (a faint curve).
+        Every state of a gas — its pressure and volume — is a single point on a
+        <b> P–V diagram</b>. Change the volume at fixed temperature and you slide
+        along an <b>isotherm</b> (a faint curve of constant T).
+      </p>
+      <p>
         Heat it up and you jump to a higher isotherm. The blue line is the path
-        (the <b>process</b>) your changes trace out.
+        (the <b>process</b>) your changes trace out from start to finish.
       </p>
       <div className="formula">
         P·V = n·R·T{"\n"}
@@ -119,6 +122,29 @@ export default function PVDiagramPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        গ্যাসের প্রতিটি অবস্থা — এর চাপ ও আয়তন — একটি <b>P–V চিত্রে</b> একটিমাত্র
+        বিন্দু। স্থির তাপমাত্রায় আয়তন বদলালে তুমি একটি <b>সমোষ্ণ রেখা (isotherm)</b>
+        বরাবর সরো (স্থির T-এর ম্লান বক্ররেখা)।
+      </p>
+      <p>
+        গরম করলে তুমি উঁচু সমোষ্ণ রেখায় লাফ দাও। নীল রেখাটি হলো তোমার পরিবর্তনের পথ
+        (<b>প্রক্রিয়া</b>), শুরু থেকে শেষ পর্যন্ত।
+      </p>
+      <div className="formula">
+        P·V = n·R·T{"\n"}
+        সমোষ্ণ (T স্থির): P·V = ধ্রুবক     কৃত কাজ = P–V পথের নিচের ক্ষেত্রফল
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        কেবল আয়তন স্লাইডার নাড়িয়ে একটি সমোষ্ণ বক্ররেখা আঁকো। কেবল তাপমাত্রা নাড়িয়ে
+        স্থির আয়তনে চাপ বাড়তে দেখো (সমআয়তন)। তাপগতিবিদ্যার প্রথম সূত্র ΔU = Q − W একে
+        তাপ ও কাজের সাথে যুক্ত করে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="♨️ Thermodynamic Processes"
@@ -126,6 +152,7 @@ export default function PVDiagramPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

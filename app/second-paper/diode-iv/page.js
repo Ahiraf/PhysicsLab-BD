@@ -129,11 +129,14 @@ export default function DiodeIVPage() {
   const explanation = (
     <>
       <p>
-        A <b>diode</b> is a one-way valve for current. Connected <b>forward</b>
-        (arrow with the flow), it conducts once the voltage passes the
-        <b> knee</b> (~0.7 V for silicon, ~0.3 V for germanium). Connected
-        <b> reverse</b>, it blocks — until a large reverse voltage causes
-        <b> breakdown</b>.
+        A <b>diode</b> is a one-way valve for electric current. Connected
+        <b> forward</b> (in the direction of its arrow), it conducts — but only
+        once the voltage passes the <b>knee</b> (~0.7 V for silicon, ~0.3 V for
+        germanium).
+      </p>
+      <p>
+        Connected <b>reverse</b>, it blocks the current almost completely — until a
+        very large reverse voltage forces a sudden <b>breakdown</b>.
       </p>
       <div className="formula">
         Forward (V {">"} V_knee):  I = (V − V_knee) / R{"\n"}
@@ -147,6 +150,28 @@ export default function DiodeIVPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>ডায়োড</b> হলো বিদ্যুৎ প্রবাহের একমুখী ভালভ। <b>সম্মুখ</b> দিকে (এর তীরের
+        দিকে) যুক্ত করলে এটি প্রবাহ চালায় — তবে কেবল যখন ভোল্টেজ <b>হাঁটু (knee)</b>
+        অতিক্রম করে (সিলিকনে ~০.৭ V, জার্মেনিয়ামে ~০.৩ V)।
+      </p>
+      <p>
+        <b>বিমুখ</b> দিকে যুক্ত করলে এটি প্রবাহ প্রায় পুরোপুরি আটকে দেয় — যতক্ষণ না
+        খুব বড় বিমুখ ভোল্টেজ হঠাৎ <b>ভাঙন (breakdown)</b> ঘটায়।
+      </p>
+      <div className="formula">
+        সম্মুখ (V {">"} V_knee):  I = (V − V_knee) / R{"\n"}
+        বিমুখ:  I ≈ 0   বড় ঋণাত্মক V-তে ভাঙন না হওয়া পর্যন্ত
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ভোল্টেজ পরিবর্তন করে দেখো কার্যবিন্দু বক্ররেখা বরাবর চলছে: হাঁটুর নিচে প্রায়
+        কোনো প্রবাহ নেই, তারপর খাড়া বৃদ্ধি। এই একমুখী আচরণই রেক্টিফায়ার কাজ করায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="📈 Diode I–V Characteristic"
@@ -154,6 +179,7 @@ export default function DiodeIVPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

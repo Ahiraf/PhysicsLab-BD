@@ -154,10 +154,14 @@ export default function RadioactiveDecayPage() {
   const explanation = (
     <>
       <p>
-        Radioactive nuclei decay <b>randomly</b> — you can never say which one
-        goes next, only the probability. Yet with many nuclei the total follows a
-        smooth <b>exponential</b> curve. The <b>half-life</b> T½ is the time for
-        half of them to decay; after each half-life the number halves again.
+        Radioactive nuclei decay <b>randomly</b> — you can never predict which one
+        goes next, only the probability that any given one will. It seems
+        completely unpredictable.
+      </p>
+      <p>
+        Yet with a huge number of nuclei, the total follows a smooth
+        <b> exponential</b> curve. The <b>half-life</b> T½ is the time for half of
+        them to decay; after each half-life the number left halves again.
       </p>
       <div className="formula">
         N = N₀ · (1/2)^(t / T½) = N₀ · e^(−λt),   λ = ln 2 / T½
@@ -170,6 +174,29 @@ export default function RadioactiveDecayPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        তেজস্ক্রিয় নিউক্লিয়াস <b>এলোমেলোভাবে</b> ক্ষয় হয় — পরেরটি কোনটি হবে তা কখনো
+        বলা যায় না, কেবল যেকোনো একটির ক্ষয়ের সম্ভাবনা বলা যায়। মনে হয় একেবারে
+        অনিশ্চিত।
+      </p>
+      <p>
+        তবু বিপুলসংখ্যক নিউক্লিয়াসে মোট সংখ্যাটি একটি মসৃণ <b>সূচকীয়</b> বক্ররেখা মেনে
+        চলে। <b>অর্ধায়ু</b> T½ হলো এদের অর্ধেক ক্ষয় হতে যে সময় লাগে; প্রতিটি অর্ধায়ুর
+        পর বাকি সংখ্যা আবার অর্ধেক হয়।
+      </p>
+      <div className="formula">
+        N = N₀ · (1/2)^(t / T½) = N₀ · e^(−λt),   λ = ln 2 / T½
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দেখো সবুজ গণনা প্রতি T½-তে অর্ধেক হচ্ছে (লাল রেখা)। খাঁজকাটা সবুজ রেখাটি এই
+        এলোমেলো চলন; নীল রেখাটি যে আদর্শ সূত্র একে অনুসরণ করে। কার্বন ডেটিং-এর ভিত্তি
+        এটাই।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="☢️ Radioactive Decay & Half-life"
@@ -177,6 +204,7 @@ export default function RadioactiveDecayPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

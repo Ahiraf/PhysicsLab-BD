@@ -116,11 +116,15 @@ export default function CircularMotionPage() {
   const explanation = (
     <>
       <p>
-        In <b>uniform circular motion</b> the speed is constant but the
-        <b> direction</b> is always changing — so there <i>is</i> an
-        acceleration, pointing to the centre. The green <b>velocity</b> is always
-        tangent to the circle; the red <b>centripetal force</b> always points
-        inward and is what keeps the mass on its curved path.
+        Here is a surprise: in <b>uniform circular motion</b> the speed stays
+        constant, yet the object is still <b>accelerating</b>. How? Because
+        velocity has a direction, and the direction is changing every instant.
+        That acceleration always points to the <b>centre</b>.
+      </p>
+      <p>
+        The green <b>velocity</b> arrow is always tangent to the circle (the way
+        the object would fly off), while the red <b>centripetal force</b> always
+        points inward and is what bends the path into a circle.
       </p>
       <div className="formula">
         v = ω·r      a_c = ω²·r = v²/r{"\n"}
@@ -134,6 +138,30 @@ export default function CircularMotionPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        একটা মজার ব্যাপার: <b>সুষম বৃত্তীয় গতিতে</b> দ্রুতি ধ্রুব থাকে, তবুও বস্তুটি
+        <b> ত্বরিত</b> হয়। কীভাবে? কারণ বেগের একটা দিক আছে, আর সেই দিক প্রতি মুহূর্তে
+        বদলাচ্ছে। এই ত্বরণ সর্বদা <b>কেন্দ্রের</b> দিকে থাকে।
+      </p>
+      <p>
+        সবুজ <b>বেগ</b> তীরটি সর্বদা বৃত্তের স্পর্শক বরাবর (যেদিকে বস্তুটি ছিটকে
+        যেত), আর লাল <b>কেন্দ্রমুখী বল</b> সর্বদা ভেতরের দিকে — এটিই পথটিকে বৃত্তে
+        বাঁকিয়ে রাখে।
+      </p>
+      <div className="formula">
+        v = ω·r      a_c = ω²·r = v²/r{"\n"}
+        F_c = m·ω²·r = m·v²/r      T = 2π/ω
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দ্রুত ঘোরালে (বড় ω) বা বড় ব্যাসার্ধ নিলে প্রয়োজনীয় ভেতরমুখী বল অনেক বেড়ে
+        যায়। বল সরিয়ে নিলে (সুতো ছিঁড়ে গেলে) বস্তুটি স্পর্শক বরাবর — সবুজ তীরের সোজা
+        বরাবর — ছিটকে যেত।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎡 Circular Motion & Centripetal Force"
@@ -141,6 +169,7 @@ export default function CircularMotionPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

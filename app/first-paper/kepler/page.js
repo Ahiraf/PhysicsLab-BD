@@ -134,11 +134,15 @@ export default function KeplerPage() {
   const explanation = (
     <>
       <p>
-        <b>Kepler's three laws</b> describe how planets orbit the Sun. The orbit
-        is an <b>ellipse</b> with the Sun at one focus (1st law). The planet
-        sweeps out <b>equal areas in equal times</b>, so it races when close to
-        the Sun and dawdles when far (2nd law) — see the fat, short wedges near
-        the Sun and the thin, long ones far away, all the same area.
+        Long before Newton explained <i>why</i>, Kepler found three rules for how
+        planets orbit the Sun. First, each orbit is an <b>ellipse</b> (a slightly
+        squashed circle) with the Sun at one <b>focus</b>, not the centre.
+      </p>
+      <p>
+        Second, a planet sweeps out <b>equal areas in equal times</b> — so it
+        races when close to the Sun and dawdles when far (see the fat short wedges
+        near the Sun and the thin long ones far away, all the same area). Third,
+        the period and size of the orbit are tied together by T² ∝ a³.
       </p>
       <div className="formula">
         1: ellipse, Sun at a focus{"\n"}
@@ -153,6 +157,32 @@ export default function KeplerPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        নিউটন <i>কেন</i> তা ব্যাখ্যা করার অনেক আগেই কেপলার গ্রহের কক্ষপথের তিনটি
+        নিয়ম খুঁজে পান। প্রথমত, প্রতিটি কক্ষপথ একটি <b>উপবৃত্ত</b> (একটু চাপা বৃত্ত),
+        যার একটি <b>উপকেন্দ্রে</b> সূর্য থাকে, কেন্দ্রে নয়।
+      </p>
+      <p>
+        দ্বিতীয়ত, গ্রহ <b>সমান সময়ে সমান ক্ষেত্রফল</b> অতিক্রম করে — তাই সূর্যের কাছে
+        দ্রুত ও দূরে ধীর চলে (সূর্যের কাছে মোটা-ছোট আর দূরে সরু-লম্বা ফালিগুলো দেখো,
+        সবগুলোর ক্ষেত্রফল সমান)। তৃতীয়ত, পর্যায়কাল ও কক্ষপথের আকার T² ∝ a³ সম্পর্কে
+        বাঁধা।
+      </p>
+      <div className="formula">
+        ১: উপবৃত্ত, উপকেন্দ্রে সূর্য{"\n"}
+        ২: dA/dt = ধ্রুবক{"\n"}
+        ৩: T² ∝ a³      (প্রতিটি গ্রহের জন্য T² / a³ একই)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        উৎকেন্দ্রিকতা বাড়িয়ে উপবৃত্তকে টেনে লম্বা করো ও দ্রুতি-পরিবর্তন বাড়িয়ে দেখো।
+        পরাক্ষ বাড়ালে পর্যায়কাল দ্রুত বাড়ে — তবু T² / a³ অনুপাত স্থির থাকে, এটিই
+        কেপলারের তৃতীয় সূত্র।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🛰️ Kepler's Laws"
@@ -160,6 +190,7 @@ export default function KeplerPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

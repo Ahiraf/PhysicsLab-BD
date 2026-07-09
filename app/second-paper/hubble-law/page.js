@@ -121,11 +121,14 @@ export default function HubbleLawPage() {
   const explanation = (
     <>
       <p>
-        In the 1920s Edwin Hubble found that almost every galaxy is moving
-        <b> away</b> from us, and the farther one is, the faster it recedes. Their
-        light is stretched to longer, <b>redder</b> wavelengths (redshift). This
-        is the key evidence that the whole universe is <b>expanding</b> — and,
-        run backwards, points to the Big Bang.
+        In the 1920s Edwin Hubble made a startling discovery: almost every galaxy
+        is moving <b>away</b> from us, and the farther one is, the faster it
+        recedes. Their light is stretched to longer, <b>redder</b> wavelengths
+        (redshift).
+      </p>
+      <p>
+        This is the key evidence that the whole universe is <b>expanding</b> — and,
+        run backwards in time, it points to a single hot beginning: the Big Bang.
       </p>
       <div className="formula">
         v = H₀ · d      (H₀ ≈ 70 km/s per Mpc){"\n"}
@@ -138,6 +141,28 @@ export default function HubbleLawPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        ১৯২০-এর দশকে এডউইন হাবল একটি চমকপ্রদ আবিষ্কার করেন: প্রায় প্রতিটি ছায়াপথ
+        আমাদের থেকে <b>দূরে</b> সরে যাচ্ছে, আর যেটি যত দূরে সেটি তত দ্রুত সরছে। তাদের
+        আলো লম্বা, <b>লালচে</b> তরঙ্গদৈর্ঘ্যে প্রসারিত হয় (লোহিত সরণ)।
+      </p>
+      <p>
+        এটিই মূল প্রমাণ যে সমগ্র মহাবিশ্ব <b>সম্প্রসারিত</b> হচ্ছে — আর সময়ের উল্টো
+        দিকে ভাবলে এটি একটিমাত্র উষ্ণ সূচনার দিকে ইঙ্গিত করে: বিগ ব্যাং।
+      </p>
+      <div className="formula">
+        v = H₀ · d      (H₀ ≈ 70 km/s প্রতি Mpc){"\n"}
+        মহাবিশ্বের বয়স ≈ 1 / H₀
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        লেখচিত্রটি দেখো: প্রতিটি ছায়াপথ মূলবিন্দু দিয়ে যাওয়া একই সরলরেখায় বসে — এর
+        ঢালই H₀। দূরের ছায়াপথ (ডানে) সবসময় দ্রুত সরে (ওপরে)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌌 Hubble's Law & Expanding Universe"
@@ -145,6 +170,7 @@ export default function HubbleLawPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

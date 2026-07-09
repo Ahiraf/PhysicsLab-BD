@@ -117,11 +117,14 @@ export default function PolarizationPage() {
   const explanation = (
     <>
       <p>
-        Light is a <b>transverse</b> wave, so its vibrations can be lined up in
-        one direction — that is <b>polarization</b>. The first filter (the
-        <b> polarizer</b>) lets through only the vertical vibrations. A second
-        filter (the <b>analyser</b>) then passes only the component along its own
-        axis, so the brightness follows <b>Malus's law</b>.
+        Light is a <b>transverse</b> wave, so its vibrations can be lined up in a
+        single direction — that lining-up is <b>polarization</b>. The first filter
+        (the <b>polarizer</b>) lets through only the vertical vibrations.
+      </p>
+      <p>
+        A second filter (the <b>analyser</b>) then passes only the part of that
+        light lying along its own axis, so the brightness follows <b>Malus's
+        law</b>.
       </p>
       <div className="formula">
         I = I₀ · cos²θ{"\n"}
@@ -136,6 +139,29 @@ export default function PolarizationPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        আলো একটি <b>আড়াআড়ি (transverse)</b> তরঙ্গ, তাই এর কম্পন একটিমাত্র দিকে সারিবদ্ধ
+        করা যায় — এই সারিবদ্ধ করাই <b>সমবর্তন (polarization)</b>। প্রথম ফিল্টার
+        (<b>পোলারাইজার</b>) কেবল উল্লম্ব কম্পনগুলো যেতে দেয়।
+      </p>
+      <p>
+        এরপর দ্বিতীয় ফিল্টার (<b>অ্যানালাইজার</b>) সেই আলোর কেবল নিজের অক্ষ বরাবর
+        অংশটুকু যেতে দেয়, তাই উজ্জ্বলতা <b>ম্যালাসের সূত্র</b> মেনে চলে।
+      </p>
+      <div className="formula">
+        I = I₀ · cos²θ{"\n"}
+        θ = 0° → সম্পূর্ণ যায় · θ = 90° → সম্পূর্ণ আটকে যায়
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        অ্যানালাইজার ঘোরাও: 0°-তে সব আলো যায়, 90°-তে অন্ধকার হয় (আড়াআড়ি পোলারাইজার),
+        আর 45°-তে ঠিক অর্ধেক যায়। কেবল আড়াআড়ি তরঙ্গই এটি করতে পারে — এটিই প্রমাণ যে
+        আলো আড়াআড়ি। সানগ্লাস, LCD পর্দা ও ফটোগ্রাফিতে এটি ব্যবহৃত হয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🕶️ Polarization (Malus's Law)"
@@ -143,6 +169,7 @@ export default function PolarizationPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

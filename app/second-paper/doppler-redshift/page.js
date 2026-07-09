@@ -109,10 +109,14 @@ export default function DopplerRedshiftPage() {
     <>
       <p>
         Light from a star carries dark <b>absorption lines</b> at fixed
-        wavelengths. If the star moves <b>away</b>, the waves are stretched and
-        the lines slide toward <b>red</b> (redshift). If it moves <b>toward</b>
-        us they bunch up and shift toward <b>blue</b>. The size of the shift tells
-        us the star's speed along our line of sight.
+        wavelengths — a kind of barcode of the atoms in it. If the star moves
+        <b> away</b>, its light waves are stretched and the lines slide toward
+        <b> red</b> (redshift).
+      </p>
+      <p>
+        If it moves <b>toward</b> us the waves bunch up and the lines shift toward
+        <b> blue</b>. The size of the shift tells us the star's speed along our
+        line of sight.
       </p>
       <div className="formula">
         Δλ / λ = v / c = z{"\n"}
@@ -126,6 +130,28 @@ export default function DopplerRedshiftPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        তারার আলোতে নির্দিষ্ট তরঙ্গদৈর্ঘ্যে কালো <b>শোষণ রেখা</b> থাকে — এটি তারার
+        পরমাণুগুলোর এক ধরনের বারকোড। তারা <b>দূরে</b> সরলে এর আলোর তরঙ্গ প্রসারিত হয়
+        এবং রেখাগুলো <b>লালের</b> দিকে সরে যায় (লোহিত সরণ)।
+      </p>
+      <p>
+        তারা আমাদের <b>দিকে</b> এলে তরঙ্গ ঘন হয় এবং রেখাগুলো <b>নীলের</b> দিকে সরে।
+        সরণের পরিমাণ আমাদের দৃষ্টিরেখা বরাবর তারার বেগ জানায়।
+      </p>
+      <div className="formula">
+        Δλ / λ = v / c = z{"\n"}
+        লোহিত সরণ (v দূরে, z {">"} 0)     নীল সরণ (v দিকে, z {"<"} 0)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        বেগ সরিয়ে দেখো তিনটি হাইড্রোজেন রেখা বর্ণালীজুড়ে সরছে। দূরের ছায়াপথে দেখা এই
+        একই ডপলার সরণই হাবলের সূত্রে সম্প্রসারমান মহাবিশ্ব প্রকাশ করেছিল।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🚦 Doppler Redshift"
@@ -133,6 +159,7 @@ export default function DopplerRedshiftPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

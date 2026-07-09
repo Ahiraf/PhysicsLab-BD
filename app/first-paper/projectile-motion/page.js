@@ -140,9 +140,19 @@ export default function ProjectileMotionPage() {
   const explanation = (
     <>
       <p>
-        A projectile moves at constant speed horizontally while gravity pulls it
-        down, producing a curved (parabolic) path. The launch splits into a
-        horizontal part <b>vₓ = v·cosθ</b> and a vertical part <b>v_y = v·sinθ</b>.
+        Imagine throwing a ball. Two motions happen at the same time, and the key
+        idea is that they <i>don't</i> affect each other. Sideways, nothing pushes
+        the ball, so it keeps a <b>constant horizontal speed</b>. Downwards,
+        gravity pulls it, so its vertical speed keeps changing — the ball slows as
+        it rises, stops for an instant at the top, then speeds up as it falls.
+        Adding these two motions together gives the familiar curved
+        (<b>parabolic</b>) path.
+      </p>
+      <p>
+        We split the launch velocity into a horizontal part <b>vₓ = v·cosθ</b> and
+        a vertical part <b>v_y = v·sinθ</b>, then handle each on its own. Here
+        <b> v</b> is the launch speed, <b>θ</b> is the launch angle, and <b>g</b>
+        is gravity.
       </p>
       <div className="formula">
         x = v·cosθ·t     y = v·sinθ·t − ½·g·t²
@@ -156,6 +166,32 @@ export default function ProjectileMotionPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        একটা বল ছুঁড়ে দেওয়ার কথা ভাবো। একই সময়ে দুটো গতি ঘটে, আর মূল কথাটি হলো
+        এরা একে অপরকে প্রভাবিত করে না। আনুভূমিক দিকে কোনো বল কাজ করে না, তাই বলটি
+        <b> ধ্রুব আনুভূমিক বেগে</b> চলে। খাড়া দিকে অভিকর্ষ বলটিকে টানে, তাই এর
+        উল্লম্ব বেগ পরিবর্তিত হয় — ওপরে ওঠার সময় ধীর হয়, চূড়ায় এক মুহূর্তের জন্য
+        থামে, তারপর নামার সময় দ্রুত হয়। এই দুই গতি মিলে পরিচিত বাঁকা
+        (<b>প্যারাবোলিক</b>) পথ তৈরি করে।
+      </p>
+      <p>
+        উৎক্ষেপণ বেগকে আমরা আনুভূমিক অংশ <b>vₓ = v·cosθ</b> এবং উল্লম্ব অংশ
+        <b> v_y = v·sinθ</b>-তে ভাগ করে আলাদাভাবে হিসাব করি। এখানে <b>v</b>
+        উৎক্ষেপণ বেগ, <b>θ</b> উৎক্ষেপণ কোণ এবং <b>g</b> অভিকর্ষজ ত্বরণ।
+      </p>
+      <div className="formula">
+        x = v·cosθ·t     y = v·sinθ·t − ½·g·t²
+        {"\n"}পাল্লা R = v²·sin(2θ) / g     সর্বোচ্চ উচ্চতা H = (v·sinθ)² / (2g)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        কোণ <b>৪৫°</b> দিয়ে দেখো — নির্দিষ্ট বেগের জন্য এতে সর্বোচ্চ পাল্লা পাওয়া
+        যায়। অভিকর্ষ বাড়ালে বল দ্রুত পড়ে, ফলে পাল্লা ও উড্ডয়নকাল দুটোই কমে যায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🏀 Projectile Motion"
@@ -163,6 +199,7 @@ export default function ProjectileMotionPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

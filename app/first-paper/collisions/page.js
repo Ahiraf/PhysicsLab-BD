@@ -134,11 +134,15 @@ export default function CollisionsPage() {
   const explanation = (
     <>
       <p>
-        In any collision the total <b>momentum</b> is conserved — the "before"
-        and "after" values above always match. Whether <b>kinetic energy</b>
-        survives depends on the <b>coefficient of restitution</b> e: e = 1 is
-        perfectly elastic (no KE lost), e = 0 is perfectly inelastic (the bodies
-        stick together and the most KE is lost).
+        When two things crash, one quantity is <b>always</b> conserved: the total
+        <b> momentum</b>. The "before" and "after" totals above always match, no
+        matter what kind of collision it is.
+      </p>
+      <p>
+        Whether the <b>kinetic energy</b> survives is a different question, decided
+        by the <b>coefficient of restitution</b> e. e = 1 is <b>perfectly
+        elastic</b> (no KE lost, like ideal snooker balls); e = 0 is <b>perfectly
+        inelastic</b> (the bodies stick together and lose the most KE).
       </p>
       <div className="formula">
         m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂        (momentum, always){"\n"}
@@ -152,6 +156,30 @@ export default function CollisionsPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        দুটি বস্তু সংঘর্ষ করলে একটি রাশি <b>সর্বদা</b> সংরক্ষিত থাকে: মোট
+        <b> ভরবেগ</b>। সংঘর্ষ যেমনই হোক, ওপরের "আগে" ও "পরে" মান দুটি সবসময় সমান।
+      </p>
+      <p>
+        <b>গতিশক্তি</b> টিকে থাকবে কিনা তা আলাদা প্রশ্ন, যা নির্ধারণ করে
+        <b> স্থিতিস্থাপক সহগ (e)</b>। e = 1 হলে <b>সম্পূর্ণ স্থিতিস্থাপক</b> (কোনো
+        গতিশক্তি হারায় না); e = 0 হলে <b>সম্পূর্ণ অস্থিতিস্থাপক</b> (বস্তু দুটি জোড়া
+        লেগে যায় এবং সবচেয়ে বেশি গতিশক্তি হারায়)।
+      </p>
+      <div className="formula">
+        m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂        (ভরবেগ, সর্বদা){"\n"}
+        v₂ − v₁ = −e(u₂ − u₁)            (স্থিতিস্থাপকতা)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        e = 1 দিলে দেখো গতিশক্তি ধ্রুব থাকে; e কমিয়ে ০-এর দিকে নিলে "হারানো
+        গতিশক্তি" বাড়তে থাকে এবং বস্তু দুটি একসাথে চলতে শুরু করে। সমান ভর ও e = 1
+        দিয়ে দেখো — এরা কেবল বেগ বিনিময় করে, একটি বিখ্যাত ফলাফল।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎱 Collisions (Elastic & Inelastic)"
@@ -159,6 +187,7 @@ export default function CollisionsPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

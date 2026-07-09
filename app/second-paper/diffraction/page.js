@@ -109,11 +109,15 @@ export default function DiffractionPage() {
   const explanation = (
     <>
       <p>
-        When light passes through a single <b>narrow slit</b>, every point in the
-        slit acts as a wavelet and they interfere — spreading the light into a
-        broad <b>central maximum</b> with dimmer fringes on each side. This
-        spreading is <b>diffraction</b>, and it only shows up when the slit is
-        comparable to the wavelength.
+        Waves don't just travel in straight lines — they bend around obstacles and
+        spread out after squeezing through a gap. When light passes through a
+        single <b>narrow slit</b>, every point in the slit acts as a tiny wavelet,
+        and these wavelets interfere.
+      </p>
+      <p>
+        The result is a broad <b>central maximum</b> with dimmer fringes on each
+        side. This spreading is <b>diffraction</b>, and it only shows up clearly
+        when the slit is comparable to the wavelength.
       </p>
       <div className="formula">
         Dark fringes (minima):  a·sinθ = m·λ   (m = 1, 2, 3 …){"\n"}
@@ -127,6 +131,30 @@ export default function DiffractionPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        তরঙ্গ কেবল সরলরেখায় চলে না — বাধার চারপাশে বেঁকে যায় এবং সরু ফাঁক গলে বেরিয়ে
+        ছড়িয়ে পড়ে। আলো যখন একটিমাত্র <b>সরু চিড়</b> দিয়ে যায়, চিড়ের প্রতিটি বিন্দু
+        ক্ষুদ্র তরঙ্গের উৎস হিসেবে কাজ করে, আর এরা ব্যতিচার করে।
+      </p>
+      <p>
+        ফলে তৈরি হয় একটি প্রশস্ত <b>কেন্দ্রীয় সর্বোচ্চ</b> এবং দুই পাশে মৃদু পটি। এই
+        ছড়িয়ে পড়াই <b>অপবর্তন (diffraction)</b>, আর এটি স্পষ্ট দেখা যায় কেবল যখন চিড়
+        তরঙ্গদৈর্ঘ্যের কাছাকাছি হয়।
+      </p>
+      <div className="formula">
+        অন্ধকার পটি (সর্বনিম্ন):  a·sinθ = m·λ   (m = 1, 2, 3 …){"\n"}
+        পর্দায় প্রথম সর্বনিম্ন:  y₁ = λ·L / a
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        চিড় <b>সরু</b> করলে প্যাটার্ন আরও চওড়া হয়ে ছড়ায় — ছোট চিড় বেশি অপবর্তন করে।
+        বড় তরঙ্গদৈর্ঘ্যও (লালের দিকে) একে চওড়া করে। কেন্দ্রীয় উজ্জ্বল পটি সবসময়
+        অন্যগুলোর দ্বিগুণ চওড়া।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎇 Single-Slit Diffraction"
@@ -134,6 +162,7 @@ export default function DiffractionPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

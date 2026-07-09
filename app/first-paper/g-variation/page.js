@@ -98,11 +98,14 @@ export default function GVariationPage() {
   const explanation = (
     <>
       <p>
-        Gravity's strength <b>g</b> depends on where you are. Go <b>up</b> and it
-        weakens as the inverse square of your distance from Earth's centre. Go
-        <b> down</b> a mine and only the mass beneath you pulls, so g falls
-        (roughly) linearly to zero at the centre. Earth's <b>spin</b> also trims a
-        little off near the equator.
+        We often treat gravity <b>g</b> as a fixed 9.8, but its strength actually
+        depends on where you stand. Go <b>up</b> (a mountain, a plane) and it
+        weakens as the inverse square of your distance from Earth's centre.
+      </p>
+      <p>
+        Go <b>down</b> a mine and only the mass <i>beneath</i> you pulls, so g
+        falls roughly linearly to zero at the very centre. Earth's <b>spin</b>
+        also trims a little off near the equator.
       </p>
       <div className="formula">
         Height h:   g_h = g·R² / (R + h)²   ≈ g(1 − 2h/R){"\n"}
@@ -118,6 +121,31 @@ export default function GVariationPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        আমরা প্রায়ই অভিকর্ষ <b>g</b>-কে স্থির ৯.৮ ধরি, কিন্তু এর মান আসলে তুমি
+        কোথায় দাঁড়িয়ে আছ তার উপর নির্ভর করে। <b>ওপরে</b> গেলে (পাহাড়, উড়োজাহাজ)
+        পৃথিবীর কেন্দ্র থেকে দূরত্বের বর্গের ব্যস্তানুপাতে এটি দুর্বল হয়।
+      </p>
+      <p>
+        খনিতে <b>নিচে</b> নামলে কেবল তোমার <i>নিচের</i> ভরটুকু টানে, তাই g প্রায়
+        সরলরৈখিকভাবে কমে কেন্দ্রে শূন্য হয়। পৃথিবীর <b>আবর্তন</b>ও বিষুবরেখার কাছে
+        একটু কমিয়ে দেয়।
+      </p>
+      <div className="formula">
+        উচ্চতা h:   g_h = g·R² / (R + h)²   ≈ g(1 − 2h/R){"\n"}
+        গভীরতা d:    g_d = g(1 − d/R){"\n"}
+        অক্ষাংশ λ: g_λ = g − ω²R·cos²λ
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        খেয়াল করো g ঠিক ভূপৃষ্ঠে সবচেয়ে বেশি এবং ওপরে-নিচে দুই দিকেই কমে। কেন্দ্রে
+        এটি শূন্য হয় (সব দিক থেকে সমান টান), আর আবর্তনের কারণে বিষুবরেখায় (λ = 0°)
+        সবচেয়ে কম।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌍 Variation of g"
@@ -125,6 +153,7 @@ export default function GVariationPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

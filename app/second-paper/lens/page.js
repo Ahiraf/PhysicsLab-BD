@@ -170,10 +170,15 @@ export default function LensPage() {
   const explanation = (
     <>
       <p>
-        A <b>convex</b> (converging) lens bends parallel light to a focus; a
-        <b> concave</b> (diverging) lens spreads it out. To find the image, trace
-        one <b>parallel</b> ray (which leaves through the focus) and one straight
-        through the <b>centre</b> — where they meet (or seem to meet) is the image.
+        A <b>convex</b> (converging) lens bends parallel rays of light together to
+        a single focus; a <b>concave</b> (diverging) lens spreads them apart. That
+        one difference explains cameras, glasses and magnifiers.
+      </p>
+      <p>
+        To find an image, trace two easy rays: one <b>parallel</b> ray (which
+        leaves the lens through the focus) and one straight through the
+        <b> centre</b> (undeviated). Where they meet — or appear to meet — is the
+        image.
       </p>
       <div className="formula">
         1/d_o + 1/d_i = 1/f      m = − d_i / d_o{"\n"}
@@ -188,6 +193,30 @@ export default function LensPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>উত্তল</b> (অভিসারী) লেন্স সমান্তরাল আলোক রশ্মিকে বেঁকিয়ে একটিমাত্র ফোকাসে
+        মেলায়; <b>অবতল</b> (অপসারী) লেন্স তাদের ছড়িয়ে দেয়। এই একটি পার্থক্যই ক্যামেরা,
+        চশমা ও আতশকাচ ব্যাখ্যা করে।
+      </p>
+      <p>
+        প্রতিবিম্ব খুঁজতে দুটি সহজ রশ্মি আঁকো: একটি <b>সমান্তরাল</b> রশ্মি (যা লেন্স
+        পেরিয়ে ফোকাস দিয়ে যায়) আর একটি <b>কেন্দ্র</b> দিয়ে সোজা (অবিচ্যুত)। এরা
+        যেখানে মেলে — বা মিলিত বলে মনে হয় — সেখানেই প্রতিবিম্ব।
+      </p>
+      <div className="formula">
+        1/d_o + 1/d_i = 1/f      m = − d_i / d_o{"\n"}
+        উত্তল: f {">"} 0      অবতল: f {"<"} 0 (সর্বদা অসদ, সোজা, ছোট প্রতিবিম্ব)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        উত্তল লেন্সে বস্তুকে ভেতরে সরাও: 2F-এর বাইরে → ছোট সদ প্রতিবিম্ব; 2F-এ → সমান
+        আকার; F ও 2F-এর মাঝে → বিবর্ধিত সদ; F-এ → অসীমে প্রতিবিম্ব; F-এর ভেতরে →
+        বিবর্ধিত অসদ (আতশকাচ)। অবতল লেন্স সবসময় ছোট, সোজা, অসদ প্রতিবিম্ব দেয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔎 Lens Ray Diagram (Convex & Concave)"
@@ -195,6 +224,7 @@ export default function LensPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

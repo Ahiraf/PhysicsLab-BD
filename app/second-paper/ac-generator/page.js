@@ -136,10 +136,14 @@ export default function ACGeneratorPage() {
   const explanation = (
     <>
       <p>
-        Spin a coil in a magnetic field and the <b>magnetic flux</b> through it
-        keeps changing. By <b>Faraday's law</b>, a changing flux induces an EMF.
-        Because the flux varies as a cosine, the induced EMF is a <b>sine wave</b>
-        — this is exactly how power-station generators make AC.
+        Where does the electricity in the wall socket come from? Spin a coil in a
+        magnetic field and the <b>magnetic flux</b> threading it keeps changing.
+        By <b>Faraday's law</b>, a changing flux induces a voltage (EMF).
+      </p>
+      <p>
+        Because the flux varies smoothly as a cosine while the coil turns, the
+        induced EMF comes out as a <b>sine wave</b> — this is exactly how
+        power-station generators make alternating current (AC).
       </p>
       <div className="formula">
         Φ = N·B·A·cos(ωt){"\n"}
@@ -153,6 +157,30 @@ export default function ACGeneratorPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        দেয়ালের সকেটের বিদ্যুৎ কোথা থেকে আসে? একটি কুণ্ডলীকে চৌম্বক ক্ষেত্রে ঘোরালে
+        এর ভেতর দিয়ে যাওয়া <b>চৌম্বক ফ্লাক্স</b> ক্রমাগত বদলায়। <b>ফ্যারাডের সূত্র</b>
+        অনুসারে, পরিবর্তনশীল ফ্লাক্স একটি ভোল্টেজ (EMF) আবিষ্ট করে।
+      </p>
+      <p>
+        কুণ্ডলী ঘোরার সাথে ফ্লাক্স কোসাইন আকারে মসৃণভাবে বদলায় বলে আবিষ্ট EMF একটি
+        <b> সাইন তরঙ্গ</b> হিসেবে আসে — বিদ্যুৎকেন্দ্রের জেনারেটর ঠিক এভাবেই পরিবর্তী
+        প্রবাহ (AC) তৈরি করে।
+      </p>
+      <div className="formula">
+        Φ = N·B·A·cos(ωt){"\n"}
+        ε = −dΦ/dt = N·B·A·ω·sin(ωt),   সর্বোচ্চ ε₀ = N·B·A·ω
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দ্রুত ঘোরালে, শক্তিশালী চুম্বক নিলে বা বেশি প্যাঁচ দিলে সর্বোচ্চ ভোল্টেজ বাড়ে।
+        কুণ্ডলী ক্ষেত্রের সমান্তরাল হলে EMF সর্বোচ্চ (ফ্লাক্স দ্রুততম বদলায়) আর
+        মুখোমুখি হলে শূন্য।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔄 AC Generator & Induction"
@@ -160,6 +188,7 @@ export default function ACGeneratorPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

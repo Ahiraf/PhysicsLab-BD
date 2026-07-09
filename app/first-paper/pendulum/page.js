@@ -132,15 +132,39 @@ export default function PendulumPage() {
     <>
       <p>
         A simple pendulum swings back and forth because gravity always pulls the
-        bob toward the lowest point. For small angles this is
-        <b> simple harmonic motion</b>, and the time for one full swing (the
-        period) depends only on the length and gravity — <i>not</i> the mass.
+        bob toward the lowest point. Pull it aside and gravity acts like a restoring
+        force, tugging it back; it overshoots, and the cycle repeats.
+      </p>
+      <p>
+        For small angles this becomes <b>simple harmonic motion</b>, and the time
+        for one full swing (the <b>period</b>) depends only on the length and
+        gravity — <i>not</i> the mass of the bob.
       </p>
       <div className="formula">T = 2π √(L / g)</div>
       <p style={{ marginBottom: 0 }}>
         Make the string longer and the swing gets slower (larger T). Increase
         gravity and it speeds up. Notice the mass of the bob never appears in the
         formula.
+      </p>
+    </>
+  );
+
+  const explanationBn = (
+    <>
+      <p>
+        সরল দোলক আগে-পিছে দোলে কারণ অভিকর্ষ সবসময় ববকে সর্বনিম্ন বিন্দুর দিকে টানে।
+        একপাশে সরালে অভিকর্ষ প্রত্যায়নী বলের মতো একে ফেরত টানে; এটি অতিক্রম করে যায়,
+        আর চক্রটি আবার শুরু হয়।
+      </p>
+      <p>
+        ছোট কোণের জন্য এটি হয়ে যায় <b>সরল ছন্দিত গতি</b>, আর একটি পূর্ণ দোলনের সময়
+        (<b>পর্যায়কাল</b>) কেবল দৈর্ঘ্য ও অভিকর্ষের উপর নির্ভর করে — ববের ভরের উপর
+        <i> নয়</i>।
+      </p>
+      <div className="formula">T = 2π √(L / g)</div>
+      <p style={{ marginBottom: 0 }}>
+        সুতো লম্বা করলে দোলন ধীর হয় (বড় T)। অভিকর্ষ বাড়ালে দ্রুত হয়। খেয়াল করো
+        সূত্রে ববের ভর কখনো আসে না।
       </p>
     </>
   );
@@ -152,6 +176,7 @@ export default function PendulumPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

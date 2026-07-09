@@ -134,10 +134,13 @@ export default function LogicGatesPage() {
   const explanation = (
     <>
       <p>
-        <b>Logic gates</b> are the building blocks of every digital circuit
-        (built from transistors). Each takes one or two binary inputs (0 = low,
-        1 = high) and gives a single output following a fixed rule — its
-        <b> truth table</b>.
+        <b>Logic gates</b> are the tiny decision-makers inside every digital
+        device (each built from transistors). A gate takes one or two binary
+        inputs (0 = low, 1 = high) and gives a single output.
+      </p>
+      <p>
+        Each gate follows one fixed rule, summed up in its <b>truth table</b> —
+        the complete list of "for these inputs, this output".
       </p>
       <div className="formula">
         AND: Q = A·B      OR: Q = A + B      NOT: Q = Ā{"\n"}
@@ -151,6 +154,28 @@ export default function LogicGatesPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>লজিক গেট</b> হলো প্রতিটি ডিজিটাল যন্ত্রের ভেতরের ক্ষুদ্র সিদ্ধান্তকারী
+        (প্রতিটি ট্রানজিস্টর দিয়ে তৈরি)। একটি গেট এক বা দুটি বাইনারি ইনপুট নেয়
+        (0 = নিম্ন, 1 = উচ্চ) এবং একটিমাত্র আউটপুট দেয়।
+      </p>
+      <p>
+        প্রতিটি গেট একটি নির্দিষ্ট নিয়ম মানে, যা তার <b>সত্যক সারণিতে</b> সংক্ষেপে
+        দেওয়া থাকে — "এই ইনপুটে এই আউটপুট"-এর পূর্ণ তালিকা।
+      </p>
+      <div className="formula">
+        AND: Q = A·B      OR: Q = A + B      NOT: Q = Ā{"\n"}
+        NAND = NOT(AND)   NOR = NOT(OR)   XOR = কেবল ইনপুট ভিন্ন হলে 1
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ইনপুট বদলে আউটপুট বাতিটি দেখো। NAND ও NOR-কে "সর্বজনীন" গেট বলা হয়, কারণ
+        কেবল এদের দিয়েই <i>যেকোনো</i> গেট — এমনকি একটি পুরো কম্পিউটার — বানানো যায়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔲 Logic Gates"
@@ -158,6 +183,7 @@ export default function LogicGatesPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

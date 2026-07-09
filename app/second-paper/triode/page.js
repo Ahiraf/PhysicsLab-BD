@@ -114,11 +114,15 @@ export default function TriodePage() {
   const explanation = (
     <>
       <p>
-        In a <b>triode valve</b>, a hot <b>cathode</b> releases electrons that
-        stream up to the positive <b>plate</b>. In between sits a <b>grid</b>: a
-        small negative voltage on it repels electrons and throttles the plate
-        current. Because the grid is close to the cathode, a <i>tiny</i> grid
-        change causes a <i>big</i> plate-current change — <b>amplification</b>.
+        In a <b>triode valve</b>, a hot <b>cathode</b> boils off electrons that
+        stream up to the positive <b>plate</b>. In between sits a <b>grid</b> — a
+        fine mesh whose voltage acts like a tap on the electron flow.
+      </p>
+      <p>
+        A small negative voltage on the grid repels electrons and throttles the
+        plate current. Because the grid sits so close to the cathode, a <i>tiny</i>
+        grid change causes a <i>big</i> plate-current change — that is
+        <b> amplification</b>.
       </p>
       <div className="formula">
         Ip = k · (Vp + μ·Vg)^1.5{"\n"}
@@ -132,6 +136,30 @@ export default function TriodePage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>ট্রায়োড ভালভে</b> একটি উত্তপ্ত <b>ক্যাথোড</b> থেকে ইলেকট্রন বেরিয়ে ধনাত্মক
+        <b> প্লেটে</b> ছুটে যায়। মাঝে থাকে একটি <b>গ্রিড</b> — একটি সূক্ষ্ম জাল, যার
+        ভোল্টেজ ইলেকট্রন প্রবাহের কল (tap)-এর মতো কাজ করে।
+      </p>
+      <p>
+        গ্রিডে সামান্য ঋণাত্মক ভোল্টেজ ইলেকট্রনকে বিকর্ষণ করে প্লেট প্রবাহ কমিয়ে দেয়।
+        গ্রিড ক্যাথোডের এত কাছে থাকে বলে <i>সামান্য</i> গ্রিড পরিবর্তনে প্লেট প্রবাহে
+        <i> বড়</i> পরিবর্তন হয় — এটিই <b>বিবর্ধন</b>।
+      </p>
+      <div className="formula">
+        Ip = k · (Vp + μ·Vg)^1.5{"\n"}
+        বিবর্ধন গুণক μ = ΔVp / ΔVg  (স্থির Ip-তে)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        গ্রিড ভোল্টেজ এক ভোল্ট নাড়িয়ে দেখো Ip লাফ দেয় — এই লিভারই অ্যামপ্লিফায়ারের মূল
+        ধারণা। μ বাড়ালে গ্রিড আরও শক্তিশালী নিয়ন্ত্রক হয়। পরে ট্রানজিস্টর একই কাজ অনেক
+        বেশি দক্ষতায় করেছে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔦 Triode Valve & Amplifier"
@@ -139,6 +167,7 @@ export default function TriodePage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

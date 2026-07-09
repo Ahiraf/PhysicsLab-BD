@@ -92,10 +92,13 @@ export default function VariableForceWorkPage() {
   const explanation = (
     <>
       <p>
-        Work is easy when the force is constant: W = F × d. But when the force
-        <b> changes</b> as the object moves, you can't use a single value. Instead
-        the work done is the <b>area under the force–displacement graph</b> —
-        adding up F·Δx over every tiny step, which is the integral ∫F dx.
+        Work is easy when the force is constant: W = F × d. But what if the force
+        <b> changes</b> as the object moves, like a stretching spring that gets
+        harder to pull? A single value of F won't do.
+      </p>
+      <p>
+        The answer is the <b>area under the force–displacement graph</b> — you add
+        up F·Δx over every tiny step, which is exactly the integral ∫F dx.
       </p>
       <div className="formula">
         W = ∫ F dx = area under the F–x graph{"\n"}
@@ -109,6 +112,29 @@ export default function VariableForceWorkPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        বল ধ্রুব হলে কাজ বের করা সহজ: W = F × d। কিন্তু বস্তু চলার সাথে সাথে বল যদি
+        <b> পরিবর্তিত</b> হয়, যেমন প্রসারমান স্প্রিং টানতে ক্রমশ কঠিন হয়, তখন? F-এর
+        একটিমাত্র মান দিয়ে হবে না।
+      </p>
+      <p>
+        উত্তর হলো <b>বল–সরণ লেখচিত্রের নিচের ক্ষেত্রফল</b> — প্রতিটি ক্ষুদ্র ধাপে
+        F·Δx যোগ করা হয়, যা ঠিক সমাকলন ∫F dx।
+      </p>
+      <div className="formula">
+        W = ∫ F dx = F–x লেখচিত্রের নিচের ক্ষেত্রফল{"\n"}
+        এখানে F = F₀ + k·x, তাই W = F₀·d + ½·k·d²
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ঢাল k = 0 দিলে বল ধ্রুব — ক্ষেত্রফল শুধু একটি আয়তক্ষেত্র F₀·d। F₀ = 0 দিলে
+        এটি একটি ত্রিভুজ ½·k·d² হয় (ঠিক প্রসারিত স্প্রিং-এর শক্তি)। যেকোনো আকৃতিতেই
+        চলে: <b>ক্ষেত্রফলই কাজ</b>।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🧮 Work by a Variable Force"
@@ -116,6 +142,7 @@ export default function VariableForceWorkPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

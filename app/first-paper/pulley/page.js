@@ -102,9 +102,13 @@ export default function PulleyPage() {
     <>
       <p>
         A <b>pulley (কপিকল)</b> just redirects the string, so both masses share
-        one tension and move together. Applying <b>F = ma</b> to each mass and
-        combining them gives the acceleration and the tension of the whole system.
-        If the masses are equal it stays balanced.
+        one tension and move together — one up while the other comes down. To find
+        their motion, apply <b>F = ma</b> to each mass separately, then combine the
+        two equations.
+      </p>
+      <p>
+        That gives the system's acceleration and the string tension. If the two
+        masses are equal, it simply stays balanced.
       </p>
       <div className="formula">
         a = (m₂ − m₁)·g / (m₁ + m₂){"\n"}
@@ -119,6 +123,29 @@ export default function PulleyPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>কপিকল (pulley)</b> কেবল সুতোর দিক বদলে দেয়, তাই দুই ভর একই টান ভাগ করে
+        নেয় ও একসাথে চলে — একটি ওপরে উঠলে অন্যটি নিচে নামে। এদের গতি বের করতে প্রতিটি
+        ভরের উপর আলাদাভাবে <b>F = ma</b> প্রয়োগ করে সমীকরণ দুটি একত্র করো।
+      </p>
+      <p>
+        এতে সিস্টেমের ত্বরণ ও সুতোর টান পাওয়া যায়। দুই ভর সমান হলে এটি কেবল
+        ভারসাম্যে থাকে।
+      </p>
+      <div className="formula">
+        a = (m₂ − m₁)·g / (m₁ + m₂){"\n"}
+        T = 2·m₁·m₂·g / (m₁ + m₂)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ভর দুটির পার্থক্য বাড়ালে ত্বরণ বাড়ে (এক পাশ খুব ছোট হলে g পর্যন্ত)। টান সবসময়
+        দুই ওজনের <i>মাঝামাঝি</i> থাকে — ভারী ওজনের চেয়ে কম (তাই সেটি নিচে নামে) আর
+        হালকাটির চেয়ে বেশি (তাই সেটি ওপরে ওঠে)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="⚙️ Pulley (Atwood Machine)"
@@ -126,6 +153,7 @@ export default function PulleyPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

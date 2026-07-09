@@ -133,10 +133,14 @@ export default function MagneticForcePage() {
   const explanation = (
     <>
       <p>
-        A moving charge in a magnetic field feels a force <b>F = qv × B</b> that
-        is always <b>perpendicular</b> to its motion. A sideways force that never
-        speeds the particle up just curves it — so it travels in a <b>circle</b>.
-        This is how mass spectrometers and cyclotrons work.
+        A moving charge in a magnetic field feels a force <b>F = qv × B</b> with a
+        strange twist: it is always <b>perpendicular</b> to the motion. A sideways
+        force can't speed the particle up or slow it down — it can only change its
+        direction.
+      </p>
+      <p>
+        So the charge is bent into a perfect <b>circle</b>. This is the principle
+        behind mass spectrometers and cyclotrons.
       </p>
       <div className="formula">
         F = q·v·B  (when v ⟂ B){"\n"}
@@ -149,6 +153,28 @@ export default function MagneticForcePage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        চৌম্বক ক্ষেত্রে গতিশীল আধান একটি বল <b>F = qv × B</b> অনুভব করে, যার এক অদ্ভুত
+        বৈশিষ্ট্য: এটি সর্বদা গতির <b>লম্ব</b>। লম্ব বল কণাকে দ্রুত বা ধীর করতে পারে
+        না — কেবল তার দিক বদলাতে পারে।
+      </p>
+      <p>
+        তাই আধানটি বেঁকে নিখুঁত <b>বৃত্তে</b> চলে। ভরের বর্ণালীবীক্ষণ ও সাইক্লোট্রনের
+        পেছনে এই নীতিই কাজ করে।
+      </p>
+      <div className="formula">
+        F = q·v·B  (যখন v ⟂ B){"\n"}
+        বৃত্তের ব্যাসার্ধ:  r = m·v / (q·B)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দ্রুততর আধান বড় বৃত্ত বানায়; শক্তিশালী ক্ষেত্র ছোট বৃত্ত। আধানের চিহ্ন উল্টে
+        দিলে এটি উল্টো দিকে বাঁকে (ফ্লেমিং-এর বাম-হস্ত নিয়ম)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🧲 Magnetic Force on a Charge"
@@ -156,6 +182,7 @@ export default function MagneticForcePage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

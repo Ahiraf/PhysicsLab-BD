@@ -113,10 +113,15 @@ export default function MomentOfInertiaPage() {
   const explanation = (
     <>
       <p>
-        The <b>moment of inertia</b> measures how hard it is to get something
-        spinning — and it depends on <i>where</i> the mass sits, not just how much
-        there is. Mass far from the axis (a ring) resists rotation more than mass
-        near it (a solid sphere), even for the same total mass and radius.
+        Just as mass measures how hard it is to <i>push</i> something into motion,
+        the <b>moment of inertia</b> measures how hard it is to get something
+        <b> spinning</b>. The twist is that it depends on <i>where</i> the mass
+        sits, not just how much there is.
+      </p>
+      <p>
+        Mass far from the axis (a ring) resists rotation much more than the same
+        mass packed near the axis (a solid sphere) — even for identical total mass
+        and radius.
       </p>
       <div className="formula">
         Ring I = m r²   ·   Disc I = ½ m r²   ·   Sphere I = ⅖ m r²{"\n"}
@@ -131,6 +136,29 @@ export default function MomentOfInertiaPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        ভর যেমন মাপে কোনো কিছুকে <i>ঠেলে</i> গতিশীল করা কতটা কঠিন, তেমনি
+        <b> জড়তার ভ্রামক</b> মাপে কোনো কিছুকে <b>ঘোরানো</b> কতটা কঠিন। মজার ব্যাপার
+        হলো এটি নির্ভর করে ভর <i>কোথায়</i> আছে তার উপর, কেবল কতটুকু আছে তার উপর নয়।
+      </p>
+      <p>
+        অক্ষ থেকে দূরে থাকা ভর (একটি বলয়) একই ভর অক্ষের কাছে জমা থাকার (নিরেট গোলক)
+        চেয়ে অনেক বেশি ঘূর্ণন-বাধা দেয় — এমনকি মোট ভর ও ব্যাসার্ধ একই হলেও।
+      </p>
+      <div className="formula">
+        বলয় I = m r²   ·   চাকতি I = ½ m r²   ·   গোলক I = ⅖ m r²{"\n"}
+        ঢালে গড়িয়ে নামা:  a = g·sinθ / (1 + I/mr²)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        একই ভর, একই ব্যাসার্ধ, একই ঢাল — তবু <b>গোলক সবসময় জেতে</b>, চাকতি দ্বিতীয়,
+        বলয় শেষ; কারণ ছোট জড়তার ভ্রামক মানে ঘূর্ণনে কম শক্তি আটকে থাকে ও বেশি
+        দ্রুতি। এই ক্রম ভর বা ব্যাসার্ধের উপর নির্ভর করে না।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎳 Moment of Inertia (Rolling Race)"
@@ -138,6 +166,7 @@ export default function MomentOfInertiaPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

@@ -111,11 +111,15 @@ export default function VerticalCircularPage() {
   const explanation = (
     <>
       <p>
-        In a <b>vertical circle</b> gravity is sometimes with the motion and
-        sometimes against it, so the ball is slowest at the top and fastest at the
-        bottom. The string tension follows suit: it is largest at the bottom
-        (tension + weight together supply the centripetal force) and smallest at
-        the top.
+        Swinging a bucket of water over your head in a full loop, why doesn't the
+        water fall out at the top? In a <b>vertical circle</b> gravity is sometimes
+        with the motion and sometimes against it, so the ball is slowest at the top
+        and fastest at the bottom.
+      </p>
+      <p>
+        The string tension follows suit: it is largest at the bottom (tension and
+        weight together supply the centripetal force) and smallest at the top,
+        where gravity is already helping pull inward.
       </p>
       <div className="formula">
         T = m·v²/r + m·g·cosθ    (θ from the bottom){"\n"}
@@ -130,6 +134,31 @@ export default function VerticalCircularPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        মাথার ওপর দিয়ে এক পাক পানির বালতি ঘোরালে চূড়ায় পানি পড়ে যায় না কেন?
+        <b> উল্লম্ব বৃত্তে</b> অভিকর্ষ কখনো গতির সাথে, কখনো গতির বিপরীতে কাজ করে, তাই
+        বল চূড়ায় সবচেয়ে ধীর ও তলায় সবচেয়ে দ্রুত।
+      </p>
+      <p>
+        সুতোর টানও একইভাবে বদলায়: তলায় সবচেয়ে বেশি (টান ও ওজন একসাথে কেন্দ্রমুখী বল
+        জোগায়) আর চূড়ায় সবচেয়ে কম, কারণ সেখানে অভিকর্ষ নিজেই ভেতরে টানতে সাহায্য
+        করছে।
+      </p>
+      <div className="formula">
+        T = m·v²/r + m·g·cosθ    (θ তলা থেকে){"\n"}
+        তলা: T = mv²/r + mg      চূড়া: T = mv²/r − mg{"\n"}
+        পূর্ণ পাকের জন্য v_top ≥ √(gr), অর্থাৎ v_bottom ≥ √(5gr)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        সর্বনিম্ন বেগের কম হলে চূড়ার কাছে সুতো <b>ঢিলা</b> হয়ে যায় (লাল) এবং বল পাক
+        সম্পূর্ণ করতে পারে না — ভেতরে পড়ে যায়। যথেষ্ট বেগ দিলে এটি পুরো পাক ঘোরে ও
+        প্রতি পাকে টান স্পন্দিত হয়।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🌀 Vertical Circular Motion"
@@ -137,6 +166,7 @@ export default function VerticalCircularPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

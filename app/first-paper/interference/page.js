@@ -95,10 +95,13 @@ export default function InterferencePage() {
   const explanation = (
     <>
       <p>
-        When two waves overlap, their displacements simply <b>add up</b>
-        (superposition). Along some directions the two always arrive in step and
-        reinforce — <b>constructive interference</b> (bright). Along others they
-        arrive out of step and cancel — <b>destructive interference</b> (dark).
+        What happens where two waves meet? They simply <b>add up</b>, crest to
+        crest and trough to trough — this is the <b>principle of superposition</b>.
+      </p>
+      <p>
+        Along some directions the two waves always arrive in step and reinforce —
+        <b> constructive interference</b> (bright). Along others they arrive
+        exactly out of step and cancel — <b>destructive interference</b> (dark).
       </p>
       <div className="formula">
         Constructive:  path difference = m·λ      (m = 0, 1, 2 …){"\n"}
@@ -112,6 +115,28 @@ export default function InterferencePage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        দুটি তরঙ্গ যেখানে মিলিত হয় সেখানে কী ঘটে? এরা কেবল <b>যোগ</b> হয়, চূড়ার সাথে
+        চূড়া আর খাঁজের সাথে খাঁজ — এটিই <b>উপরিপাতন নীতি</b>।
+      </p>
+      <p>
+        কিছু দিকে দুই তরঙ্গ সবসময় একই ধাপে পৌঁছে পরস্পরকে জোরদার করে —
+        <b> গঠনমূলক ব্যতিচার</b> (উজ্জ্বল)। অন্য দিকে ঠিক বিপরীত ধাপে পৌঁছে কাটাকাটি
+        হয় — <b>ধ্বংসাত্মক ব্যতিচার</b> (অন্ধকার)।
+      </p>
+      <div className="formula">
+        গঠনমূলক:  পথ পার্থক্য = m·λ      (m = 0, 1, 2 …){"\n"}
+        ধ্বংসাত্মক:   পথ পার্থক্য = (m + ½)·λ
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        উৎসের ব্যবধান বাড়ালে পটিগুলো কাছাকাছি আসে; তরঙ্গদৈর্ঘ্য বাড়ালে এরা ছড়িয়ে
+        পড়ে — ২য় পত্রের দ্বি-চিড় পরীক্ষার পেছনেও একই নিয়ম।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="💠 Interference of Waves"
@@ -119,6 +144,7 @@ export default function InterferencePage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

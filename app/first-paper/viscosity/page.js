@@ -133,11 +133,16 @@ export default function ViscosityPage() {
   const explanation = (
     <>
       <p>
-        <b>Viscosity</b> is a fluid's internal friction. A sphere sinking through
-        it feels three forces: its <b>weight</b> down, <b>buoyancy</b> up, and a
-        <b> viscous drag</b> up that grows with speed. When drag + buoyancy exactly
-        balance the weight, the sphere stops accelerating — that steady speed is
-        the <b>terminal velocity</b>.
+        Why does a marble sink slowly through honey but quickly through water?
+        <b> Viscosity</b> is a fluid's internal friction — its resistance to
+        flowing. A sphere sinking through a fluid feels three forces: its
+        <b> weight</b> down, <b>buoyancy</b> up, and a <b>viscous drag</b> up that
+        grows with speed.
+      </p>
+      <p>
+        At first the sphere accelerates, but as it speeds up the drag grows until
+        drag + buoyancy exactly balance the weight. Then it stops accelerating and
+        falls at a steady <b>terminal velocity</b>.
       </p>
       <div className="formula">
         Viscous drag (Stokes' law):  F = 6π·η·r·v{"\n"}
@@ -151,6 +156,30 @@ export default function ViscosityPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        মার্বেল মধুর ভেতর দিয়ে ধীরে অথচ পানির ভেতর দিয়ে দ্রুত ডোবে কেন?
+        <b> সান্দ্রতা</b> হলো তরলের অভ্যন্তরীণ ঘর্ষণ — প্রবাহে বাধা দেওয়ার প্রবণতা।
+        তরলে ডুবতে থাকা গোলক তিনটি বল অনুভব করে: নিচে <b>ওজন</b>, ওপরে <b>প্লবতা</b>,
+        আর ওপরে <b>সান্দ্র বাধা</b> যা বেগের সাথে বাড়ে।
+      </p>
+      <p>
+        প্রথমে গোলকটি ত্বরিত হয়, কিন্তু দ্রুততর হওয়ার সাথে বাধা বাড়তে থাকে যতক্ষণ না
+        বাধা + প্লবতা ঠিক ওজনের সমান হয়। তখন এটি আর ত্বরিত হয় না এবং স্থির
+        <b> প্রান্তিক বেগে</b> পড়ে।
+      </p>
+      <div className="formula">
+        সান্দ্র বাধা (স্টোকসের সূত্র):  F = 6π·η·r·v{"\n"}
+        প্রান্তিক বেগ:  v_t = 2·r²·(ρ − σ)·g / (9·η)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        ঘন তরল (বড় η) → ধীর পতন। বড় বা অধিক ঘন গোলক দ্রুত পড়ে। ল্যাবে তরলের সান্দ্রতা
+        <i> মাপার</i> পড়ন্ত-বল পদ্ধতি ঠিক এটাই।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🫧 Viscosity & Terminal Velocity"
@@ -158,6 +187,7 @@ export default function ViscosityPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

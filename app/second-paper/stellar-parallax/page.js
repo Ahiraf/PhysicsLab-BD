@@ -112,10 +112,14 @@ export default function StellarParallaxPage() {
   const explanation = (
     <>
       <p>
-        Hold a finger up and blink each eye — it jumps against the background.
-        Astronomers do the same with the two ends of Earth's orbit six months
-        apart: a nearby star shifts against the far stars. That tiny shift is its
-        <b> parallax</b>, and it directly gives the distance.
+        Hold a finger up and blink each eye in turn — the finger jumps against the
+        background. That shift is bigger when the finger is close. Astronomers use
+        the same trick on a huge scale.
+      </p>
+      <p>
+        They photograph a nearby star from the two ends of Earth's orbit, six
+        months apart, and it shifts against the far background stars. That tiny
+        shift is its <b>parallax</b>, and it gives the distance directly.
       </p>
       <div className="formula">
         d (parsec) = 1 / p (arcsecond){"\n"}
@@ -129,6 +133,28 @@ export default function StellarParallaxPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        একটা আঙুল তুলে পালা করে এক-এক চোখ বন্ধ করো — আঙুলটি পটভূমির সাপেক্ষে লাফ দেয়।
+        আঙুল কাছে থাকলে এই সরণ বড় হয়। জ্যোতির্বিদরা বিশাল স্কেলে একই কৌশল ব্যবহার করেন।
+      </p>
+      <p>
+        তাঁরা ছয় মাস ব্যবধানে পৃথিবীর কক্ষপথের দুই প্রান্ত থেকে কাছের একটি তারার ছবি
+        তোলেন, আর সেটি দূরের পটভূমি-তারার সাপেক্ষে সরে যায়। এই ক্ষুদ্র সরণই তার
+        <b> লম্বন (parallax)</b>, যা সরাসরি দূরত্ব দেয়।
+      </p>
+      <div className="formula">
+        d (পারসেক) = 1 / p (আর্কসেকেন্ড){"\n"}
+        ১ পারসেক = ৩.২৬ আলোকবর্ষ    (p = বার্ষিক মোট সরণের অর্ধেক)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        তারাকে আরও দূরে সরালে আপাত দোলা ছোট হয় — লম্বন কোণ কমে যায়। ১ pc দূরত্বের তারার
+        লম্বন ঠিক ১″। (এখানে সরণ অনেক বাড়িয়ে দেখানো; বাস্তব লম্বন ১″-এর কম।)
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="📐 Stellar Parallax"
@@ -136,6 +162,7 @@ export default function StellarParallaxPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

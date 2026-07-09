@@ -116,10 +116,17 @@ export default function VectorResultantPage() {
   const explanation = (
     <>
       <p>
-        Two vectors add by the <b>parallelogram law</b>. Break each into
-        horizontal and vertical parts, add the parts separately, then recombine.
-        Think of two people pulling a boat with ropes at different angles — the
-        boat moves along the single <b>resultant</b> (red).
+        A <b>vector</b> is a quantity with both size and direction — like a push
+        or a velocity. You can't just add their numbers; the directions matter
+        too. Think of two people pulling a boat with ropes at different angles: the
+        boat follows neither rope, but a single combined pull called the
+        <b> resultant</b> (red).
+      </p>
+      <p>
+        The reliable way to add them is the <b>component method</b>: break each
+        vector into a horizontal (x) part and a vertical (y) part, add the x-parts
+        together and the y-parts together, then rebuild one vector from those two
+        totals. (This is the same result as the <b>parallelogram law</b>.)
       </p>
       <div className="formula">
         Rₓ = A·cosθ_A + B·cosθ_B     R_y = A·sinθ_A + B·sinθ_B{"\n"}
@@ -132,6 +139,31 @@ export default function VectorResultantPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>ভেক্টর</b> হলো এমন রাশি যার মান ও দিক দুটোই আছে — যেমন বল বা বেগ। এদের
+        শুধু সংখ্যা যোগ করা যায় না; দিকও হিসাবে আনতে হয়। দুজন মানুষ ভিন্ন কোণে দড়ি
+        দিয়ে একটা নৌকা টানছে ভাবো: নৌকা কোনো একটা দড়ি বরাবর যায় না, বরং একটিমাত্র
+        মিলিত টান — <b>লব্ধি</b> (লাল) বরাবর চলে।
+      </p>
+      <p>
+        যোগ করার নির্ভরযোগ্য উপায় হলো <b>উপাংশ পদ্ধতি</b>: প্রতিটি ভেক্টরকে আনুভূমিক
+        (x) ও উল্লম্ব (y) অংশে ভাগ করো, সব x-অংশ একসাথে ও সব y-অংশ একসাথে যোগ করো,
+        তারপর ওই দুই যোগফল থেকে একটি ভেক্টর গঠন করো। (এটি <b>সামান্তরিক সূত্রের</b>
+        সমান ফল দেয়।)
+      </p>
+      <div className="formula">
+        Rₓ = A·cosθ_A + B·cosθ_B     R_y = A·sinθ_A + B·sinθ_B{"\n"}
+        R = √(Rₓ² + R_y²)     θ = tan⁻¹(R_y / Rₓ)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        দুটি ভেক্টর একই দিকে রাখলে R শুধু তাদের যোগফল। বিপরীত দিকে রাখলে এরা কাটাকাটি
+        হয়ে যায়। ৯০°-তে পাওয়া যায় R = √(A² + B²)।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="➕ Vector Resultant & Components"
@@ -139,6 +171,7 @@ export default function VectorResultantPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

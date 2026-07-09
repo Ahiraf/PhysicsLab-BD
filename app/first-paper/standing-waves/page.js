@@ -118,9 +118,14 @@ export default function StandingWavesPage() {
     <>
       <p>
         A <b>standing wave</b> forms when a wave reflects off a fixed end and
-        overlaps the incoming wave. The result doesn't travel — it just swings in
-        place. <b>Nodes</b> (blue) never move; <b>antinodes</b> (red) swing the
-        most. Only whole numbers of half-wavelengths fit between the fixed ends.
+        overlaps the incoming wave. Unlike a normal wave, the pattern doesn't
+        travel anywhere — it just swings in place, like a skipping rope.
+      </p>
+      <p>
+        Some points, the <b>nodes</b> (blue), never move at all; others, the
+        <b> antinodes</b> (red), swing the most. Only whole numbers of
+        half-wavelengths fit between the two fixed ends, which is why an instrument
+        can only play certain notes.
       </p>
       <div className="formula">
         y = A·sin(nπx/L)·cos(ωt){"\n"}
@@ -134,6 +139,30 @@ export default function StandingWavesPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>স্থির তরঙ্গ</b> তৈরি হয় যখন কোনো তরঙ্গ স্থির প্রান্ত থেকে প্রতিফলিত হয়ে
+        আগত তরঙ্গের সাথে উপরিপাতিত হয়। সাধারণ তরঙ্গের মতো এই প্যাটার্ন কোথাও এগোয় না
+        — কেবল দড়ি লাফানোর মতো একই জায়গায় দোলে।
+      </p>
+      <p>
+        কিছু বিন্দু, <b>নিস্পন্দ (node)</b> (নীল), একদমই নড়ে না; অন্যরা,
+        <b> সুস্পন্দ (antinode)</b> (লাল), সবচেয়ে বেশি দোলে। দুই স্থির প্রান্তের মাঝে
+        কেবল পূর্ণসংখ্যক অর্ধ-তরঙ্গদৈর্ঘ্য আঁটে, তাই বাদ্যযন্ত্র কেবল নির্দিষ্ট সুরই
+        বাজাতে পারে।
+      </p>
+      <div className="formula">
+        y = A·sin(nπx/L)·cos(ωt){"\n"}
+        অনুমোদিত তরঙ্গদৈর্ঘ্য:  λₙ = 2L / n     কম্পাঙ্ক:  fₙ = n·f₁   (n = 1, 2, 3 …)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        হারমোনিকগুলো ধাপে ধাপে দেখো: n = 1 মূল সুর, n = 2 কম্পাঙ্ক দ্বিগুণ করে,
+        ইত্যাদি। গিটার বা বেহালার তার ঠিক এভাবেই সুর তৈরি করে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🎻 Standing Waves & Harmonics"
@@ -141,6 +170,7 @@ export default function StandingWavesPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

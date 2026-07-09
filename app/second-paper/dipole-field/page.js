@@ -137,11 +137,13 @@ export default function DipoleFieldPage() {
   const explanation = (
     <>
       <p>
-        A dipole's field points away from +q and into −q. Two special lines
-        matter most: the <b>axial line</b> (through both charges) and the
-        <b> equatorial line</b> (the perpendicular bisector). Move the green test
-        point with the angle slider and compare the exact field with the standard
-        formulas.
+        A dipole's field points away from the +q charge and into the −q charge.
+        Two special lines matter most: the <b>axial line</b> (the line through both
+        charges) and the <b>equatorial line</b> (the perpendicular bisector).
+      </p>
+      <p>
+        Move the green test point with the angle slider and compare the exact field
+        with the standard formulas for these two directions.
       </p>
       <div className="formula">
         Axial:       E = 2·k·p / r³{"\n"}
@@ -156,6 +158,30 @@ export default function DipoleFieldPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        ডাইপোলের ক্ষেত্র +q আধান থেকে দূরে ও −q আধানের দিকে নির্দেশ করে। দুটি বিশেষ
+        রেখা সবচেয়ে গুরুত্বপূর্ণ: <b>অক্ষীয় রেখা</b> (দুই আধানের মধ্য দিয়ে যাওয়া রেখা)
+        এবং <b>নিরক্ষীয় রেখা</b> (লম্ব সমদ্বিখণ্ডক)।
+      </p>
+      <p>
+        কোণ স্লাইডার দিয়ে সবুজ পরীক্ষা-বিন্দুটি সরিয়ে এই দুই দিকের প্রমিত সূত্রের সাথে
+        প্রকৃত ক্ষেত্র মিলিয়ে দেখো।
+      </p>
+      <div className="formula">
+        অক্ষীয়:       E = 2·k·p / r³{"\n"}
+        নিরক্ষীয়:  E = k·p / r³        (অর্থাৎ অক্ষীয় ক্ষেত্র নিরক্ষীয়ের দ্বিগুণ)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        θ = 0° (অক্ষীয়) ও θ = 90° (নিরক্ষীয়) দাও: একই দূরত্বে অক্ষীয় ক্ষেত্র প্রায়
+        <b> দ্বিগুণ</b> শক্তিশালী। দুটোই <b>1/r³</b> হারে কমে — একক আধানের 1/r²-এর
+        চেয়ে অনেক দ্রুত, কারণ দূরে গিয়ে দুই আধান প্রায় কাটাকাটি হয়ে যায়। (সূত্রগুলো
+        ধরে নেয় r ≫ a।)
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🔷 Field of an Electric Dipole"
@@ -163,6 +189,7 @@ export default function DipoleFieldPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

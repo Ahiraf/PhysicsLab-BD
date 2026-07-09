@@ -113,11 +113,14 @@ export default function HRDiagramPage() {
   const explanation = (
     <>
       <p>
-        The <b>Hertzsprung–Russell diagram</b> plots stars by surface
-        <b> temperature</b> (hot on the left) against <b>luminosity</b>. Most
-        stars, including the Sun, lie on a diagonal band called the <b>main
-        sequence</b>. Cool but very bright stars must be huge — <b>giants</b>;
-        hot but faint ones are tiny — <b>white dwarfs</b>.
+        The <b>Hertzsprung–Russell diagram</b> is astronomy's master chart: it
+        plots stars by surface <b>temperature</b> (hot on the left) against
+        <b> luminosity</b> (true brightness).
+      </p>
+      <p>
+        Most stars, including the Sun, lie on a diagonal band called the <b>main
+        sequence</b>. A cool but very bright star must be enormous — a <b>giant</b>;
+        a hot but faint one must be tiny — a <b>white dwarf</b>.
       </p>
       <div className="formula">
         L = 4π·R²·σ·T⁴     ⟹     L / L☉ = (R / R☉)² · (T / T☉)⁴
@@ -130,6 +133,29 @@ export default function HRDiagramPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        <b>হার্টজস্প্রুং–রাসেল চিত্র</b> জ্যোতির্বিজ্ঞানের মূল ছক: এটি তারাদের
+        পৃষ্ঠ <b>তাপমাত্রা</b> (বামে উষ্ণ) বনাম <b>ঔজ্জ্বল্য</b> (প্রকৃত উজ্জ্বলতা)
+        অনুযায়ী স্থাপন করে।
+      </p>
+      <p>
+        সূর্যসহ বেশিরভাগ তারা <b>মূল ধারা (main sequence)</b> নামের একটি কোনাকুনি
+        পটিতে থাকে। শীতল অথচ খুব উজ্জ্বল তারা নিশ্চয়ই বিশাল — <b>দানব</b>; উষ্ণ অথচ
+        ম্লান তারা নিশ্চয়ই ক্ষুদ্র — <b>শ্বেত বামন</b>।
+      </p>
+      <div className="formula">
+        L = 4π·R²·σ·T⁴     ⟹     L / L☉ = (R / R☉)² · (T / T☉)⁴
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        তাপমাত্রা সূর্যের মতো রেখে ব্যাসার্ধ বাড়ালে তোমার তারা দানব অঞ্চলে উঠে যায়।
+        উষ্ণ ও ক্ষুদ্র করলে শ্বেত-বামন কোণে নেমে যায়। এই চিত্র তারার পুরো জীবনকাহিনি
+        তুলে ধরে।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="⭐ H–R Diagram"
@@ -137,6 +163,7 @@ export default function HRDiagramPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

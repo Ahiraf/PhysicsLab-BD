@@ -123,10 +123,14 @@ export default function EscapeVelocityPage() {
   const explanation = (
     <>
       <p>
-        As a rocket climbs, gravity keeps pulling it back — but gravity also gets
-        <b> weaker</b> with distance. The <b>escape velocity</b> is the launch
-        speed just big enough that gravity, adding up over the whole infinite
-        journey, can never quite bring it to a stop.
+        Throw a ball up and it always comes back. So how does a rocket ever leave
+        Earth for good? As it climbs, gravity keeps pulling it back — but gravity
+        also gets <b>weaker</b> with distance.
+      </p>
+      <p>
+        The <b>escape velocity</b> is the launch speed just big enough that
+        gravity, adding up its pull over the whole (infinite) journey, can never
+        quite bring the rocket to a stop.
       </p>
       <div className="formula">
         v_escape = √(2·g·R) = √(2·G·M / R){"\n"}
@@ -140,6 +144,29 @@ export default function EscapeVelocityPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        একটা বল ওপরে ছুঁড়লে সবসময় ফিরে আসে। তাহলে রকেট কীভাবে পৃথিবী চিরতরে ছেড়ে
+        যায়? ওপরে ওঠার সময় অভিকর্ষ একে টেনে ধরে — তবে দূরত্ব বাড়ার সাথে অভিকর্ষ
+        <b> দুর্বলও</b> হতে থাকে।
+      </p>
+      <p>
+        <b>মুক্তিবেগ</b> হলো ঠিক ততটুকু উৎক্ষেপণ বেগ, যাতে সম্পূর্ণ (অসীম) যাত্রায়
+        অভিকর্ষের সব টান যোগ করেও রকেটটিকে আর কখনো থামানো যায় না।
+      </p>
+      <div className="formula">
+        v_escape = √(2·g·R) = √(2·G·M / R){"\n"}
+        (রকেটের ভরের উপর নির্ভরশীল নয়)
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        1×v_esc-এর কম হলে রকেট ওঠে, থামে ও ফিরে পড়ে। 1× বা তার বেশি হলে মুক্তি পায়।
+        খেয়াল করো বৃহস্পতির মুক্তিবেগ চাঁদের চেয়ে কত বেশি — এজন্যই ছোট বস্তুরা
+        বায়ুমণ্ডল ধরে রাখতে পারে না।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="🚀 Escape Velocity"
@@ -147,6 +174,7 @@ export default function EscapeVelocityPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }

@@ -117,10 +117,14 @@ export default function MeasurementPage() {
   const explanation = (
     <>
       <p>
-        A <b>vernier calliper</b> measures small lengths more precisely than a
-        plain ruler. You read the whole millimetres from the <b>main scale</b>,
-        then find the one <b>vernier</b> line that exactly lines up with a main
-        line (shown in red) — that gives the fraction.
+        A plain ruler can read to about a millimetre — but what if you need
+        tenths of that? A <b>vernier calliper</b> gets you there with a clever
+        second scale.
+      </p>
+      <p>
+        You read the whole millimetres from the <b>main scale</b>, then look along
+        the sliding <b>vernier</b> scale for the one line that <i>exactly</i> lines
+        up with a main line (shown in red) — that line number gives the fraction.
       </p>
       <div className="formula">
         Reading = Main scale + (Vernier division × Least count){"\n"}
@@ -134,6 +138,30 @@ export default function MeasurementPage() {
     </>
   );
 
+  const explanationBn = (
+    <>
+      <p>
+        সাধারণ স্কেল প্রায় এক মিলিমিটার পর্যন্ত মাপতে পারে — কিন্তু এর দশ ভাগের এক
+        ভাগ লাগলে? <b>ভার্নিয়ার ক্যালিপার</b> একটি চতুর দ্বিতীয় স্কেল দিয়ে সেটি
+        সম্ভব করে।
+      </p>
+      <p>
+        তুমি <b>প্রধান স্কেল</b> থেকে পূর্ণ মিলিমিটার পড়ো, তারপর সরে যাওয়া
+        <b> ভার্নিয়ার</b> স্কেলে খুঁজে দেখো কোন দাগটি প্রধান স্কেলের একটি দাগের সাথে
+        <i> ঠিক</i> মিলে যায় (লাল রঙে দেখানো) — সেই দাগের সংখ্যাই ভগ্নাংশ দেয়।
+      </p>
+      <div className="formula">
+        পাঠ = প্রধান স্কেল + (ভার্নিয়ার ভাগ × ক্ষুদ্রতম গণন){"\n"}
+        ক্ষুদ্রতম গণন = ১ প্রধান ভাগ ÷ ভার্নিয়ার ভাগ সংখ্যা = ১ mm ÷ ১০ = ০.১ mm
+      </div>
+      <p style={{ marginBottom: 0 }}>
+        <b>স্ক্রু গজ</b> একই নীতিতে চলে, তবে একটি ঘূর্ণায়মান থিম্বল ব্যবহার করে
+        (পিচ ÷ ১০০), যার ক্ষুদ্রতম গণন আরও ছোট ০.০১ mm — সরু তার ও পাতলা পাতের জন্য
+        আদর্শ।
+      </p>
+    </>
+  );
+
   return (
     <SimulationLayout
       title="📏 Vernier & Screw Gauge"
@@ -141,6 +169,7 @@ export default function MeasurementPage() {
       canvas={<canvas ref={canvasRef} width={640} height={420} />}
       controls={controls}
       explanation={explanation}
+      explanationBn={explanationBn}
     />
   );
 }
