@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "./LanguageContext";
+import AskAI from "./AskAI";
 
 // The shared template for EVERY simulation page:
 //   animation (left) + controls (right) + explanation (below).
@@ -45,6 +46,9 @@ export default function SimulationLayout({
         <h2>{bn ? "📖 পদার্থবিজ্ঞান" : "📖 The Physics"}</h2>
         {body}
       </section>
+
+      {/* Strip a leading emoji from the title so the AI gets a clean topic. */}
+      <AskAI topic={title.replace(/^[^\p{L}]+/u, "").trim() || title} />
     </article>
   );
 }

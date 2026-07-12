@@ -9,3 +9,6 @@
 .DS_Store
 *.log
 .env*
+
+# but do commit the documented example
+!.env.example

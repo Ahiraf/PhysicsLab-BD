@@ -246,6 +246,52 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
 .formula-math .katex-display > .katex { text-align: left; white-space: nowrap; }
 .formula-math .katex { color: var(--text); font-size: 1.12em; }
 
+/* ---- Ask the AI tutor ---- */
+.ask-ai {
+  margin-top: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.ask-ai h2 { margin: 0 0 4px; font-size: 1.2rem; }
+.ask-sub { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
+.ask-row { display: flex; gap: 10px; }
+.ask-input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+.ask-input:focus { outline: none; border-color: var(--accent); }
+.ask-ai .btn { flex: 0 0 auto; }
+.ask-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.ask-chip {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.ask-chip:hover:not(:disabled) { border-color: var(--accent); color: var(--text); }
+.ask-answer {
+  margin-top: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  white-space: pre-wrap;
+  line-height: 1.65;
+}
+.ask-error { margin-top: 12px; color: var(--danger); font-size: 0.9rem; }
+.ask-note { margin: 10px 0 0; color: var(--muted); font-size: 0.78rem; }
+
 /* ---- Footer ---- */
 .footer {
   border-top: 1px solid var(--border);
