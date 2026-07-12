@@ -1,4 +1,4 @@
-import ChapterGrid from "../../components/ChapterGrid";
+import PaperMenu from "../../components/PaperMenu";
 import { secondPaper } from "../../data/topics";
 
 export const metadata = {
@@ -9,14 +9,7 @@ export const metadata = {
 };
 
 export default function SecondPaperPage() {
-  return (
-    <>
-      <nav className="breadcrumb">Home › 2nd Paper</nav>
-      <h1 className="section-title" style={{ marginTop: 4 }}>
-        📗 Physics 2nd Paper
-      </h1>
-      <p className="section-sub">Pick a chapter to see its simulations.</p>
-      <ChapterGrid basePath="/second-paper" chapters={secondPaper.chapters} />
-    </>
-  );
+  // Heading + chapter grid live in a client component so they follow the
+  // navbar language toggle; this server page keeps the metadata above.
+  return <PaperMenu paper={secondPaper} />;
 }

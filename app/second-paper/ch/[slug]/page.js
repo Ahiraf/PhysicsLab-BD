@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import TopicGrid from "../../../../components/TopicGrid";
+import ChapterView from "../../../../components/ChapterView";
 import { secondPaper, findChapter } from "../../../../data/topics";
 
 // Pre-render one page per chapter at build time.
@@ -23,24 +22,7 @@ export default async function SecondPaperChapterPage({ params }) {
   const ch = findChapter(secondPaper, slug);
   if (!ch) notFound();
 
-  const topics = ch.sims.map((s) => ({ ...s, ready: true, chapter: `Chapter ${ch.num}` }));
-
-  return (
-    <>
-      <nav className="breadcrumb">
-        <Link href="/">Home</Link>
-        {" › "}
-        <Link href="/second-paper">2nd Paper</Link>
-        {" › "}
-        {ch.name}
-      </nav>
-      <h1 className="section-title" style={{ marginTop: 4 }}>
-        {ch.emoji} {ch.name}
-      </h1>
-      <p className="section-sub">
-        Chapter {ch.num} · {ch.sims.length} simulation{ch.sims.length > 1 ? "s" : ""} — tap one to open it.
-      </p>
-      <TopicGrid basePath="/second-paper" topics={topics} />
-    </>
-  );
+  // Headings + grid render in a client component so they follow the language
+  // toggle; this server page keeps the SEO metadata and static params.
+  return <ChapterView paper={secondPaper} chapter={ch} />;
 }
