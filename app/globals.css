@@ -189,6 +189,24 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
 .results .row { display: flex; justify-content: space-between; font-size: 0.95rem; padding: 3px 0; }
 .results .row b { color: var(--accent-2); }
 
+/* ---- Case selector (segmented buttons) + fields ---- */
+.seg { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.seg button {
+  flex: 1 1 auto;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--muted);
+  padding: 7px 8px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.seg button.active { background: var(--accent); border-color: var(--accent); color: #071022; }
+.case-desc { font-size: 0.86rem; color: var(--muted); margin: -4px 0 14px; }
+.note { margin-top: 10px; font-size: 0.85rem; color: var(--danger); }
+.results .row.head { border-top: 1px dashed var(--border); margin-top: 6px; padding-top: 8px; color: var(--muted); }
+
 /* ---- Explanation ---- */
 .sim-explain {
   margin-top: 26px;

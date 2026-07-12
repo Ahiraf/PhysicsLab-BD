@@ -28,10 +28,13 @@ export const firstPaper = {
     },
     {
       num: 2, slug: "vectors", name: "Vectors", name_bn: "ভেক্টর", emoji: "➕",
-      blurb: "Adding, resolving and combining vector quantities.",
-      blurb_bn: "ভেক্টর রাশির যোগ, বিভাজন ও সমন্বয়।",
+      blurb: "Adding, resolving, products and vector calculus.",
+      blurb_bn: "ভেক্টর যোগ, বিভাজন, গুণন ও ভেক্টর ক্যালকুলাস।",
       sims: [
         { slug: "vector-resultant", title: "Vector Resultant & Components", title_bn: "ভেক্টরের লব্ধি ও উপাংশ", emoji: "➕", blurb: "Add two vectors, see the resultant and split a vector into components.", blurb_bn: "দুটি ভেক্টর যোগ করো, লব্ধি দেখো এবং একটি ভেক্টরকে উপাংশে ভাঙো।" },
+        { slug: "river-boat", title: "River–Boat (Relative Velocity)", title_bn: "নদী-নৌকা (আপেক্ষিক বেগ)", emoji: "🚣", blurb: "Cross a river three ways: shortest time, shortest path and a 45° heading.", blurb_bn: "তিনভাবে নদী পার হও: সর্বনিম্ন সময়, সর্বনিম্ন দূরত্ব ও ৪৫° কোণের পথ।" },
+        { slug: "dot-cross-product", title: "Dot & Cross Product", title_bn: "ডট ও ক্রস গুণন", emoji: "✖️", blurb: "Two vectors, one angle — see A·B (projection) and A×B (parallelogram area).", blurb_bn: "দুটি ভেক্টর, এক কোণ — A·B (অভিক্ষেপ) ও A×B (সামান্তরিকের ক্ষেত্রফল) দেখো।" },
+        { slug: "vector-calculus", title: "Gradient, Divergence & Curl", title_bn: "গ্রেডিয়েন্ট, ডাইভারজেন্স ও কার্ল", emoji: "🧭", blurb: "Visualise the ∇ operator on scalar and vector fields — slope, source/sink and swirl.", blurb_bn: "স্কেলার ও ভেক্টর ক্ষেত্রে ∇ অপারেটর দেখো — ঢাল, উৎস/সিংক ও ঘূর্ণন।" },
       ],
     },
     {
@@ -40,6 +43,7 @@ export const firstPaper = {
       blurb_bn: "এক ও দ্বিমাত্রিক গতি।",
       sims: [
         { slug: "projectile-motion", title: "Projectile Motion", title_bn: "প্রাসের গতি", emoji: "🏀", blurb: "Launch a ball and watch its curved path change with angle and speed.", blurb_bn: "একটি বল নিক্ষেপ করো এবং কোণ ও গতিবেগের সাথে এর বাঁকা পথ পরিবর্তন দেখো।" },
+        { slug: "projectile-height", title: "Projectile from a Height", title_bn: "উচ্চতা থেকে প্রক্ষেপণ", emoji: "🏔️", blurb: "Throw off a hill or building — horizontal, angled up or down, and from the ground.", blurb_bn: "পাহাড় বা ভবন থেকে নিক্ষেপ — অনুভূমিক, ঊর্ধ্ব বা নিম্নকোণে এবং ভূমি থেকে।" },
       ],
     },
     {
