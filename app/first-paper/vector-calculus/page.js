@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import SimulationLayout from "../../../components/SimulationLayout";
 import Slider from "../../../components/Slider";
+import Formula from "../../../components/Formula";
 import { useLanguage } from "../../../components/LanguageContext";
+
+// Shared LaTeX for the equations (same maths in both languages).
+const fGrad = "\\nabla f = \\left(\\dfrac{\\partial f}{\\partial x},\\; \\dfrac{\\partial f}{\\partial y},\\; \\dfrac{\\partial f}{\\partial z}\\right)";
+const fDiv = "\\nabla \\cdot \\vec{F} = \\dfrac{\\partial F_x}{\\partial x} + \\dfrac{\\partial F_y}{\\partial y} + \\dfrac{\\partial F_z}{\\partial z}";
+const fCurl = "\\nabla \\times \\vec{F} = \\left(\\dfrac{\\partial F_z}{\\partial y} - \\dfrac{\\partial F_y}{\\partial z},\\; \\dfrac{\\partial F_x}{\\partial z} - \\dfrac{\\partial F_z}{\\partial x},\\; \\dfrac{\\partial F_y}{\\partial x} - \\dfrac{\\partial F_x}{\\partial y}\\right)";
 
 const R = 1; // domain is [-R, R] in x and y
 
@@ -182,14 +188,12 @@ export default function VectorCalculusPage() {
         three ways. Which one you use depends on whether the field is a
         <b> scalar</b> (like temperature) or a <b>vector</b> (like flow velocity).
       </p>
-      <div className="formula">
-        Gradient (scalar → vector):{"\n"}
-        {"   "}∇f = (∂f/∂x, ∂f/∂y, ∂f/∂z){"\n\n"}
-        Divergence (vector → scalar):{"\n"}
-        {"   "}∇·F = ∂Fₓ/∂x + ∂F_y/∂y + ∂F_z/∂z{"\n\n"}
-        Curl (vector → vector):{"\n"}
-        {"   "}∇×F = ( ∂F_z/∂y − ∂F_y/∂z, ∂Fₓ/∂z − ∂F_z/∂x, ∂F_y/∂x − ∂Fₓ/∂y )
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>Gradient</b> (scalar → vector):</p>
+      <Formula tex={fGrad} />
+      <p style={{ margin: "12px 0 0" }}><b>Divergence</b> (vector → scalar):</p>
+      <Formula tex={fDiv} />
+      <p style={{ margin: "12px 0 0" }}><b>Curl</b> (vector → vector):</p>
+      <Formula tex={fCurl} />
       <p>
         <b>Gradient</b> of a scalar field points in the direction of steepest
         increase, and its length is how steep that slope is — here every arrow
@@ -212,14 +216,12 @@ export default function VectorCalculusPage() {
         হয়। কোনটি ব্যবহার করবে তা নির্ভর করে ক্ষেত্রটি <b>স্কেলার</b> (যেমন তাপমাত্রা)
         নাকি <b>ভেক্টর</b> (যেমন প্রবাহ বেগ) তার ওপর।
       </p>
-      <div className="formula">
-        গ্রেডিয়েন্ট (স্কেলার → ভেক্টর):{"\n"}
-        {"   "}∇f = (∂f/∂x, ∂f/∂y, ∂f/∂z){"\n\n"}
-        ডাইভারজেন্স (ভেক্টর → স্কেলার):{"\n"}
-        {"   "}∇·F = ∂Fₓ/∂x + ∂F_y/∂y + ∂F_z/∂z{"\n\n"}
-        কার্ল (ভেক্টর → ভেক্টর):{"\n"}
-        {"   "}∇×F = ( ∂F_z/∂y − ∂F_y/∂z, ∂Fₓ/∂z − ∂F_z/∂x, ∂F_y/∂x − ∂Fₓ/∂y )
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>গ্রেডিয়েন্ট</b> (স্কেলার → ভেক্টর):</p>
+      <Formula tex={fGrad} />
+      <p style={{ margin: "12px 0 0" }}><b>ডাইভারজেন্স</b> (ভেক্টর → স্কেলার):</p>
+      <Formula tex={fDiv} />
+      <p style={{ margin: "12px 0 0" }}><b>কার্ল</b> (ভেক্টর → ভেক্টর):</p>
+      <Formula tex={fCurl} />
       <p>
         স্কেলার ক্ষেত্রের <b>গ্রেডিয়েন্ট</b> সবচেয়ে দ্রুত বৃদ্ধির দিকে নির্দেশ করে এবং
         এর দৈর্ঘ্য সেই ঢালের খাড়াত্ব বোঝায় — এখানে প্রতিটি তীর পাহাড়ের চূড়ার দিকে

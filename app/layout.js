@@ -1,3 +1,4 @@
+import "katex/dist/katex.min.css";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import { LanguageProvider } from "../components/LanguageContext";

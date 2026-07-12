@@ -3,7 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import SimulationLayout from "../../../components/SimulationLayout";
 import Slider from "../../../components/Slider";
+import Formula from "../../../components/Formula";
 import { useLanguage } from "../../../components/LanguageContext";
+
+// Shared LaTeX for the equations (same maths in both languages).
+const fX = "x = v\\cos\\theta \\; t";
+const fY = "y = h + v\\sin\\theta \\; t - \\tfrac{1}{2}\\, g\\, t^{2}";
+const fQuad = "\\tfrac{1}{2}\\, g\\, t^{2} - v\\sin\\theta \\; t - h = 0";
+const fT = "t = \\dfrac{v\\sin\\theta + \\sqrt{(v\\sin\\theta)^{2} + 2gh}}{g}";
+const fRange = "R = v\\cos\\theta \\cdot t \\qquad v_{\\text{impact}} = \\sqrt{v_x^{2} + v_y^{2}}";
 
 // The five NCTB "projectile" scenarios. `mode` decides how the launch angle is
 // applied; `h0` is a sensible starting height for that case.
@@ -223,13 +231,11 @@ export default function ProjectileHeightPage() {
         Taking the ground as <b>y = 0</b> and up as positive, the position at any
         time <b>t</b> is:
       </p>
-      <div className="formula">
-        x = v·cosθ·t{"\n"}
-        y = h + v·sinθ·t − ½·g·t²{"\n"}
-        Landing time: ½·g·t² − v·sinθ·t − h = 0{"\n"}
-        ⇒ t = [ v·sinθ + √( (v·sinθ)² + 2gh ) ] / g{"\n"}
-        Range R = v·cosθ · t     Impact speed = √(vₓ² + v_y²)
-      </div>
+      <Formula lines={[fX, fY]} />
+      <p style={{ margin: "12px 0 0" }}>Landing time — set y = 0 and solve the quadratic:</p>
+      <Formula lines={[fQuad, fT]} />
+      <p style={{ margin: "12px 0 0" }}>Then the range and impact speed are:</p>
+      <Formula tex={fRange} />
       <p style={{ marginBottom: 0 }}>
         The five cases are all the <i>same</i> equations — only θ and h change.
         <b> Horizontal</b> uses θ = 0; <b>from the ground</b> uses h = 0 (giving
@@ -252,13 +258,11 @@ export default function ProjectileHeightPage() {
         ভূমিকে <b>y = 0</b> এবং ঊর্ধ্বমুখকে ধনাত্মক ধরলে যেকোনো সময় <b>t</b>-তে
         অবস্থান:
       </p>
-      <div className="formula">
-        x = v·cosθ·t{"\n"}
-        y = h + v·sinθ·t − ½·g·t²{"\n"}
-        পতনকাল: ½·g·t² − v·sinθ·t − h = 0{"\n"}
-        ⇒ t = [ v·sinθ + √( (v·sinθ)² + 2gh ) ] / g{"\n"}
-        পাল্লা R = v·cosθ · t     আঘাতের বেগ = √(vₓ² + v_y²)
-      </div>
+      <Formula lines={[fX, fY]} />
+      <p style={{ margin: "12px 0 0" }}>পতনকাল — y = 0 বসিয়ে দ্বিঘাত সমীকরণ সমাধান করলে:</p>
+      <Formula lines={[fQuad, fT]} />
+      <p style={{ margin: "12px 0 0" }}>তাহলে পাল্লা ও আঘাতের বেগ:</p>
+      <Formula tex={fRange} />
       <p style={{ marginBottom: 0 }}>
         পাঁচটি ক্ষেত্রেই সমীকরণ <i>একই</i> — শুধু θ ও h বদলায়। <b>অনুভূমিক</b>-এ
         θ = ০; <b>ভূমি থেকে</b>-তে h = ০ (ফলে R = v²·sin2θ/g); উচ্চতা থেকে

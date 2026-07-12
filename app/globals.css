@@ -227,6 +227,25 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
   margin-top: 12px;
 }
 
+/* ---- Textbook-style maths (KaTeX) ---- */
+.formula-math {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+.formula-row {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+/* KaTeX display blocks are centred by default; left-align to read like notes
+   and stop them adding big outer margins inside our box. */
+.formula-math .katex-display { margin: 0; text-align: left; }
+.formula-math .katex-display > .katex { text-align: left; white-space: nowrap; }
+.formula-math .katex { color: var(--text); font-size: 1.12em; }
+
 /* ---- Footer ---- */
 .footer {
   border-top: 1px solid var(--border);

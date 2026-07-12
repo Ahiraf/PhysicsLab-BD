@@ -3,7 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import SimulationLayout from "../../../components/SimulationLayout";
 import Slider from "../../../components/Slider";
+import Formula from "../../../components/Formula";
 import { useLanguage } from "../../../components/LanguageContext";
+
+// Shared LaTeX for the equations (same maths in both languages).
+const fResultant = "\\vec{V} = \\vec{v_b} + \\vec{v_r}";
+const fTime = "t = \\dfrac{d}{v_b} \\qquad x = \\dfrac{v_r\\, d}{v_b} \\qquad V = \\sqrt{v_b^{2} + v_r^{2}}";
+const fPath = "\\sin\\theta = \\dfrac{v_r}{v_b} \\qquad t = \\dfrac{d}{\\sqrt{v_b^{2} - v_r^{2}}}";
+const f45 = "V_y = v_b\\sin 45^\\circ \\qquad V_x = v_r - v_b\\cos 45^\\circ \\qquad t = \\dfrac{d}{V_y}";
 
 // Three classic NCTB river-boat cases. `alpha` is the steering angle measured
 // from the straight-across (perpendicular) direction, tilted upstream.
@@ -57,17 +64,25 @@ export default function RiverBoatPage() {
     ctx.clearRect(0, 0, W, H);
 
     const mt = 30, mb = 34, ml = 30;
+    const WIDTH_MAX = 150; // matches the slider max: fixes metres→pixels so the
+                           // river visibly grows/shrinks as the width changes.
     const land = impossible ? width * 0.6 : drift; // fallback so the view still frames
     const xMin = Math.min(0, land) - Math.max(Math.abs(land) * 0.15, 4);
     const xMax = Math.max(0, land, width * 0.25) + Math.max(Math.abs(land) * 0.15, 4);
     const worldW = xMax - xMin;
-    const scale = Math.min((W - 2 * ml) / worldW, (H - mt - mb) / width);
+    const availH = H - mt - mb;
+    // One uniform scale (keeps the path angle honest); capped so the widest
+    // river still fits and wide drifts don't overflow horizontally.
+    const scale = Math.min((W - 2 * ml) / worldW, availH / WIDTH_MAX);
     const contentW = worldW * scale;
     const startPx = (W - contentW) / 2;
     const originX = startPx - xMin * scale;
-    const nearBankY = H - mb;
+    // Centre the river band vertically so a narrow river reads as narrow.
+    const riverPx = width * scale;
+    const midY = mt + availH / 2;
+    const nearBankY = midY + riverPx / 2;
+    const farBankY = midY - riverPx / 2;
     const P = (x, y) => [originX + x * scale, nearBankY - y * scale];
-    const farBankY = nearBankY - width * scale;
 
     // water
     ctx.fillStyle = "rgba(55,120,224,0.13)";
@@ -200,15 +215,14 @@ export default function RiverBoatPage() {
         <b> water's velocity</b> relative to the ground (v_r, the current). How you
         aim the boat decides the trade-off between speed and drift.
       </p>
-      <div className="formula">
-        Resultant:  V = v_b + v_r   (vector sum){"\n\n"}
-        1) Shortest time — aim straight across (⟂ to bank):{"\n"}
-        {"   "}t = d / v_b     drift x = v_r·d / v_b     V = √(v_b² + v_r²){"\n\n"}
-        2) Shortest path — aim upstream at angle θ where{"\n"}
-        {"   "}sinθ = v_r / v_b ,  drift = 0,  t = d / √(v_b² − v_r²){"\n\n"}
-        3) 45° to bank — aim upstream at 45°:{"\n"}
-        {"   "}V_y = v_b·sin45°,  V_x = v_r − v_b·cos45°,  t = d / V_y
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>Resultant</b> (vector sum):</p>
+      <Formula tex={fResultant} />
+      <p style={{ margin: "12px 0 0" }}><b>1) Shortest time</b> — aim straight across (⟂ to the bank):</p>
+      <Formula tex={fTime} />
+      <p style={{ margin: "12px 0 0" }}><b>2) Shortest path</b> — aim upstream so the drift is zero (needs v_b &gt; v_r):</p>
+      <Formula tex={fPath} />
+      <p style={{ margin: "12px 0 0" }}><b>3) 45° to the bank</b> — aim upstream at 45°:</p>
+      <Formula tex={f45} />
       <p style={{ marginBottom: 0 }}>
         Notice case&nbsp;1 gives the <b>smallest time</b> but the boat lands
         downstream, while case&nbsp;2 gives the <b>smallest distance</b> (straight
@@ -225,15 +239,14 @@ export default function RiverBoatPage() {
         হয়) এবং পানির <b>ভূমি-সাপেক্ষ</b> বেগ (v_r, স্রোত) — এই দুইয়ের ভেক্টর যোগফল।
         নৌকাকে কীভাবে তাক করো তার ওপর সময় ও সরণের সমঝোতা নির্ভর করে।
       </p>
-      <div className="formula">
-        লব্ধি:  V = v_b + v_r   (ভেক্টর যোগ){"\n\n"}
-        ১) সর্বনিম্ন সময় — সোজা আড়াআড়ি লক্ষ্য (তীরের ⟂):{"\n"}
-        {"   "}t = d / v_b     সরণ x = v_r·d / v_b     V = √(v_b² + v_r²){"\n\n"}
-        ২) সর্বনিম্ন দূরত্ব — উজানে θ কোণে লক্ষ্য, যেখানে{"\n"}
-        {"   "}sinθ = v_r / v_b ,  সরণ = ০,  t = d / √(v_b² − v_r²){"\n\n"}
-        ৩) তীরের সাথে ৪৫° — উজানে ৪৫° কোণে লক্ষ্য:{"\n"}
-        {"   "}V_y = v_b·sin৪৫°,  V_x = v_r − v_b·cos৪৫°,  t = d / V_y
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>লব্ধি</b> (ভেক্টর যোগ):</p>
+      <Formula tex={fResultant} />
+      <p style={{ margin: "12px 0 0" }}><b>১) সর্বনিম্ন সময়</b> — সোজা আড়াআড়ি লক্ষ্য (তীরের ⟂):</p>
+      <Formula tex={fTime} />
+      <p style={{ margin: "12px 0 0" }}><b>২) সর্বনিম্ন দূরত্ব</b> — উজানে লক্ষ্য যাতে সরণ শূন্য হয় (v_b &gt; v_r লাগবে):</p>
+      <Formula tex={fPath} />
+      <p style={{ margin: "12px 0 0" }}><b>৩) তীরের সাথে ৪৫°</b> — উজানে ৪৫° কোণে লক্ষ্য:</p>
+      <Formula tex={f45} />
       <p style={{ marginBottom: 0 }}>
         লক্ষ্য করো, ১নং ক্ষেত্রে <b>সময় সবচেয়ে কম</b> কিন্তু নৌকা ভাটিতে গিয়ে পৌঁছায়,
         আর ২নং ক্ষেত্রে <b>দূরত্ব সবচেয়ে কম</b> (সোজা আড়াআড়ি) কিন্তু বেশি সময় লাগে।

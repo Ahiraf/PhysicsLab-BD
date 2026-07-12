@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import SimulationLayout from "../../../components/SimulationLayout";
 import Slider from "../../../components/Slider";
+import Formula from "../../../components/Formula";
 import { useLanguage } from "../../../components/LanguageContext";
+
+// Shared LaTeX for the equations (same maths in both languages).
+const fDot = "\\vec{A}\\cdot\\vec{B} = |\\vec{A}|\\,|\\vec{B}|\\cos\\theta";
+const fCross = "\\vec{A}\\times\\vec{B} = |\\vec{A}|\\,|\\vec{B}|\\sin\\theta \\; \\hat{n}";
+const fDotComp = "\\vec{A}\\cdot\\vec{B} = A_xB_x + A_yB_y + A_zB_z";
 
 export default function DotCrossPage() {
   const { lang } = useLanguage();
@@ -175,12 +181,8 @@ export default function DotCrossPage() {
         "how much are they perpendicular?" and gives a new vector at right angles
         to both.
       </p>
-      <div className="formula">
-        A·B = |A||B| cosθ   (scalar){"\n"}
-        A×B = |A||B| sinθ n̂   (vector, n̂ ⟂ to both){"\n"}
-        A·B = AₓBₓ + A_yB_y + A_zB_z{"\n"}
-        |A×B| = area of the parallelogram formed by A and B
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>Dot</b> (scalar) product, and <b>cross</b> (vector) product with n̂ ⟂ to both:</p>
+      <Formula lines={[fDot, fCross, fDotComp]} />
       <p>
         In the <b>dot</b> view, the yellow segment is the projection of <b>B</b>
         onto <b>A</b>; multiply its length by |A| to get A·B. It is largest when
@@ -203,12 +205,8 @@ export default function DotCrossPage() {
         একই দিকে?" — এবং একটি সাধারণ সংখ্যা দেয়। <b>ক্রস (ভেক্টর) গুণন</b> বলে "এরা
         কতটা লম্ব?" — এবং উভয়ের সাথে সমকোণী একটি নতুন ভেক্টর দেয়।
       </p>
-      <div className="formula">
-        A·B = |A||B| cosθ   (স্কেলার){"\n"}
-        A×B = |A||B| sinθ n̂   (ভেক্টর, n̂ উভয়ের ⟂){"\n"}
-        A·B = AₓBₓ + A_yB_y + A_zB_z{"\n"}
-        |A×B| = A ও B দিয়ে গঠিত সামান্তরিকের ক্ষেত্রফল
-      </div>
+      <p style={{ margin: "8px 0 0" }}><b>ডট</b> (স্কেলার) গুণন এবং <b>ক্রস</b> (ভেক্টর) গুণন, যেখানে n̂ উভয়ের ⟂:</p>
+      <Formula lines={[fDot, fCross, fDotComp]} />
       <p>
         <b>ডট</b> দৃশ্যে হলুদ অংশটি <b>A</b>-এর ওপর <b>B</b>-এর অভিক্ষেপ; এর
         দৈর্ঘ্যকে |A| দিয়ে গুণ করলে A·B পাওয়া যায়। ভেক্টর দুটি সমান্তরাল হলে
