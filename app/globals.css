@@ -56,7 +56,7 @@ a { color: inherit; text-decoration: none; }
 }
 .brand { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.3px; }
 .brand span { color: var(--accent-2); }
-.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-links a {
   color: var(--muted);
   padding: 6px 12px;
@@ -66,6 +66,23 @@ a { color: inherit; text-decoration: none; }
   transition: background 0.15s, color 0.15s;
 }
 .nav-links a:hover { background: var(--bg-soft); color: var(--text); }
+/* The section you're currently viewing. */
+.nav-links a.active { background: var(--bg-soft); color: var(--accent-2); }
+
+/* Hamburger — hidden on desktop, revealed in the mobile media query below. */
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.nav-toggle:hover { border-color: var(--accent); }
 
 /* Language toggle button (EN ⇄ বাংলা) */
 .lang-toggle {
@@ -292,6 +309,28 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
 .ask-error { margin-top: 12px; color: var(--danger); font-size: 0.9rem; }
 .ask-note { margin: 10px 0 0; color: var(--muted); font-size: 0.78rem; }
 
+/* ---- Prev / Next simulation navigation ---- */
+.sim-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.sim-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.sim-nav-link:hover { transform: translateY(-2px); border-color: var(--accent); }
+.sim-nav-link.next { text-align: right; align-items: flex-end; }
+.sim-nav-dir { color: var(--muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.sim-nav-title { color: var(--text); font-weight: 700; font-size: 1rem; }
+
 /* ---- Footer ---- */
 .footer {
   border-top: 1px solid var(--border);
@@ -303,8 +342,11 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
 
 /* ---- Mobile ---- */
 @media (max-width: 760px) {
+  .hero { padding: 24px 0 16px; }
   .hero h1 { font-size: 1.8rem; }
-  .grid, .grid-3 { grid-template-columns: 1fr; }
+  .hero p { font-size: 1rem; }
+  .grid { grid-template-columns: 1fr; gap: 14px; }
+  .grid-3 { grid-template-columns: 1fr; gap: 14px; }
   /* Stack the animation on top and the controls below it. */
   .sim-grid { grid-template-columns: 1fr; }
   .sim-title { font-size: 1.5rem; }
@@ -312,13 +354,39 @@ main.container { padding-top: 28px; padding-bottom: 60px; }
   .sim-controls { padding: 14px; }
   .sim-explain { padding: 16px; }
   .formula { font-size: 0.85rem; }
+  .section-title { font-size: 1.3rem; }
+
+  /* Show the hamburger and turn the links into a drop-down panel. */
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px 20px 16px;
+    background: rgba(11, 16, 32, 0.98);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .navbar-inner { position: relative; }
+  .nav-links a { padding: 12px 14px; font-size: 1rem; }
+  .nav-links .lang-toggle { margin-top: 6px; padding: 12px 14px; text-align: center; }
 }
 
 @media (max-width: 460px) {
   .container { padding: 0 14px; }
-  .nav-links { gap: 6px; }
-  .nav-links a { padding: 6px 9px; font-size: 0.9rem; }
-  .lang-toggle { padding: 5px 11px; }
+  .brand { font-size: 1.05rem; }
   .sim-title { font-size: 1.3rem; }
   .formula { font-size: 0.78rem; padding: 10px 12px; }
+  /* Stack prev/next so the titles never get cramped. */
+  .sim-nav { grid-template-columns: 1fr; }
+  .sim-nav-link.next { text-align: left; align-items: flex-start; }
+  /* Stack the Ask-AI input and button so neither gets squeezed. */
+  .ask-row { flex-direction: column; }
+  .ask-ai .btn { width: 100%; }
 }

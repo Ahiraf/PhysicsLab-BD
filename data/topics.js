@@ -236,3 +236,39 @@ export const secondPaper = {
 export function findChapter(paper, slug) {
   return paper.chapters.find((c) => c.slug === slug);
 }
+
+// All papers, in menu order — used by the navbar and the prev/next sim nav.
+export const papers = [firstPaper, secondPaper];
+
+// Flatten a paper into an ordered list of its simulations, each tagged with the
+// chapter it belongs to and its full route. This is the reading order a student
+// moves through with the ⟨ Prev / Next ⟩ buttons on a simulation page.
+export function flattenSims(paper) {
+  return paper.chapters.flatMap((chapter) =>
+    chapter.sims.map((sim) => ({
+      ...sim,
+      chapter,
+      paper,
+      href: `${paper.path}/${sim.slug}`,
+    }))
+  );
+}
+
+// Given a simulation route like "/first-paper/projectile-motion", find that sim
+// and its neighbours (previous/next in the same paper). Neighbours are `null`
+// at the very start/end so the buttons can hide. This lets SimulationLayout add
+// prev/next navigation without every sim page passing its own slug.
+export function findSimNeighbours(pathname) {
+  for (const paper of papers) {
+    const sims = flattenSims(paper);
+    const index = sims.findIndex((s) => s.href === pathname);
+    if (index !== -1) {
+      return {
+        current: sims[index],
+        prev: index > 0 ? sims[index - 1] : null,
+        next: index < sims.length - 1 ? sims[index + 1] : null,
+      };
+    }
+  }
+  return { current: null, prev: null, next: null };
+}
