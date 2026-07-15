@@ -1,13 +1,13 @@
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 
 // This runs on the server (Node runtime) so the API key never reaches the
-// browser. The frontend POSTs { topic, question, lang }; we ask Claude and
+// browser. The frontend POSTs { topic, question, lang }; we ask OpenAI and
 // return { answer }.
 export const runtime = "nodejs";
 
 // Model is overridable via env so it's a one-line change to trade cost for
-// capability (e.g. EXPLAIN_MODEL=claude-haiku-4-5 for ~5× cheaper answers).
-const MODEL = process.env.EXPLAIN_MODEL || "claude-opus-4-8";
+// capability (e.g. EXPLAIN_MODEL=gpt-4o for stronger answers).
+const MODEL = process.env.EXPLAIN_MODEL || "gpt-4o-mini";
 
 const systemPrompt = (bn) =>
   bn
@@ -25,7 +25,7 @@ Rules:
 - If you're unsure, say so — never invent facts.`;
 
 export async function POST(req) {
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.OPENAI_API_KEY) {
     return Response.json(
       { error: "The AI tutor isn't configured on this deployment." },
       { status: 503 }
@@ -50,14 +50,14 @@ export async function POST(req) {
     return Response.json({ error: "Please keep your question short." }, { status: 400 });
   }
 
-  const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
+  const client = new OpenAI(); // reads OPENAI_API_KEY from the environment
 
   try {
-    const message = await client.messages.create({
+    const completion = await client.chat.completions.create({
       model: MODEL,
       max_tokens: 1024,
-      system: systemPrompt(bn),
       messages: [
+        { role: "system", content: systemPrompt(bn) },
         {
           role: "user",
           content: `Simulation the student is viewing: "${topic}".\n\nQuestion: ${question}`,
@@ -65,15 +65,11 @@ export async function POST(req) {
       ],
     });
 
-    const answer = message.content
-      .filter((b) => b.type === "text")
-      .map((b) => b.text)
-      .join("")
-      .trim();
+    const answer = (completion.choices?.[0]?.message?.content || "").trim();
 
     return Response.json({ answer });
   } catch (err) {
-    // Map Anthropic errors to a friendly message; keep details out of the client.
+    // Map OpenAI errors to a friendly message; keep details out of the client.
     const status = err?.status && err.status >= 400 && err.status < 600 ? err.status : 502;
     const msg =
       status === 429

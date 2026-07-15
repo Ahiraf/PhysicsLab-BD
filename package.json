@@ -9,9 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.111.0",
     "katex": "^0.17.0",
     "next": "^16.2.10",
+    "openai": "^4.67.0",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   }

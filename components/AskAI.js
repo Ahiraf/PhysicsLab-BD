@@ -5,7 +5,7 @@ import { useLanguage } from "./LanguageContext";
 
 // "Ask the AI tutor" box shown under every simulation. It POSTs the student's
 // question (plus the current simulation topic) to /api/explain, which calls
-// Claude on the server. Degrades gracefully if the feature isn't configured.
+// OpenAI on the server. Degrades gracefully if the feature isn't configured.
 export default function AskAI({ topic }) {
   const { lang } = useLanguage();
   const bn = lang === "bn";
